@@ -1,5 +1,5 @@
 const Home = () => {
-    return <>{process.env.WP_API_URL}</>;
+    return <>Start project</>;
 };
 
 export default Home;
