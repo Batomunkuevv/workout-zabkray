@@ -3,12 +3,13 @@
 @tailwind utilities;
 
 :root {
-    --background: #ffffff;
-    --foreground: #171717;
-}
+    --general-black: "#0E0B0B";
+    --general-gray: "#262626";
 
-body {
-    color: var(--foreground);
-    background: var(--background);
-    font-family: Arial, Helvetica, sans-serif;
+    --general-red-gradient: linear-gradient(180deg, #aa0000 0%, #e80000 50%, #eb2323 100%);
+
+    --border-primary: rgba(255, 255, 255, 0.2);
+
+    --text-white: #fff;
+    --text-black: #0e0b0b;
 }
