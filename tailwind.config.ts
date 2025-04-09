@@ -29,8 +29,8 @@ const config: Config = {
                 },
             },
             fontFamily: {
-                helios: "var(--font-helios)",
-                benzin: "var(--font-benzin)",
+                helios: ["var(--font-helios)", "sans-serif"],
+                benzin: ["var(--font-benzin)", "sans-serif"],
             },
             letterSpacing: {
                 default: "0.04em",

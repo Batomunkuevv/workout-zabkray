@@ -1,4 +1,4 @@
-import { Typograph } from "../Typograph";
+import { Typograph } from "@ui";
 
 const tags = ["Воркаут", "Паркур", "Стритлифтинг"];
 

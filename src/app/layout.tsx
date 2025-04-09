@@ -1,13 +1,12 @@
-import { ReactNode } from "react";
 import localFont from "next/font/local";
 import clsx from "clsx";
 
 import "./globals.css";
 
 import type { Metadata } from "next";
+import { LayoutProps } from "@/types";
 
-import Header from "./components/ui/header/Header";
-import Footer from "./components/ui/footer/footer";
+import { MainLayout } from "./components/layout/MainLayout";
 
 export const metadata: Metadata = {
     title: "Create Next App",
@@ -57,22 +56,14 @@ const benzin = localFont({
     variable: "--font-benzin",
 });
 
-interface RootLayoutProps {
-    children: ReactNode;
-}
-
-const RootLayout = ({ children }: RootLayoutProps) => {
+const RootLayout = ({ children }: LayoutProps) => {
     return (
         <html lang="ru">
             <head>
                 <meta name="robots" content="noindex, nofollow" />
             </head>
             <body className={clsx(heliosExt.variable, benzin.variable)}>
-                <div className="flex flex-col overflow-clip">
-                    <Header />
-                    <main className="flex-1">{children}</main>
-                    <Footer />
-                </div>
+                <MainLayout>{children}</MainLayout>
             </body>
         </html>
     );
