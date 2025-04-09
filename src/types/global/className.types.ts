@@ -1,1 +1,3 @@
-export type ClassNameProps = { className?: string };
+export interface ClassNameProps {
+    className?: string;
+}

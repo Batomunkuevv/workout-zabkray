@@ -1,6 +1,6 @@
 {
   "name": "workout-zabkray",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",
@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "html-react-parser": "^5.2.3",
     "next": "15.1.6",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
@@ -19,6 +20,7 @@
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "autoprefixer": "^10.4.20",
+    "clsx": "^2.1.1",
     "eslint": "^9",
     "eslint-config-next": "15.1.6",
     "postcss": "^8",

@@ -4,10 +4,10 @@ const config: Config = {
     content: ["./src/pages/**/*.{js,ts,jsx,tsx,mdx}", "./src/components/**/*.{js,ts,jsx,tsx,mdx}", "./src/app/**/*.{js,ts,jsx,tsx,mdx}"],
     theme: {
         screens: {
-            lg: { max: "1885px" },
-            md: { max: "1419px" },
-            tb: { max: "992px" },
-            sm: { max: "760px" },
+            lg: { max: "1639px" },
+            md: { max: "1439px" },
+            tb: { max: "1279px" },
+            sm: { max: "767px" },
             s: { max: "576px" },
             xs: { max: "359px" },
         },
@@ -22,6 +22,7 @@ const config: Config = {
                 },
                 g: {
                     black: "var(--general-black)",
+                    gray: "var(--general-gray)",
                     gradient: {
                         red: "var(--general-red-gradient)",
                     },
@@ -30,6 +31,14 @@ const config: Config = {
             fontFamily: {
                 helios: "var(--font-helios)",
                 benzin: "var(--font-benzin)",
+            },
+            letterSpacing: {
+                default: "0.04em",
+            },
+            borderRadius: {
+                "12": "12px",
+                "24": "24px",
+                "40": "40px",
             },
         },
     },

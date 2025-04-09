@@ -1,5 +1,6 @@
 import { ReactNode } from "react";
 import localFont from "next/font/local";
+import clsx from "clsx";
 
 import "./globals.css";
 
@@ -55,7 +56,6 @@ const benzin = localFont({
     display: "swap",
     variable: "--font-benzin",
 });
-console.log(heliosExt, benzin);
 
 interface RootLayoutProps {
     children: ReactNode;
@@ -67,8 +67,8 @@ const RootLayout = ({ children }: RootLayoutProps) => {
             <head>
                 <meta name="robots" content="noindex, nofollow" />
             </head>
-            <body>
-                <div className="flex flex-col">
+            <body className={clsx(heliosExt.variable, benzin.variable)}>
+                <div className="flex flex-col overflow-clip">
                     <Header />
                     <main className="flex-1">{children}</main>
                     <Footer />

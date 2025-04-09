@@ -3,8 +3,8 @@
 @tailwind utilities;
 
 :root {
-    --general-black: "#0E0B0B";
-    --general-gray: "#262626";
+    --general-black: #0e0b0b;
+    --general-gray: #262626;
 
     --general-red-gradient: linear-gradient(180deg, #aa0000 0%, #e80000 50%, #eb2323 100%);
 
@@ -12,4 +12,74 @@
 
     --text-white: #fff;
     --text-black: #0e0b0b;
+}
+
+html,
+body {
+    @apply font-helios text-t-black scroll-smooth;
+}
+
+@supports not selector(::-webkit-scrollbar) {
+    body {
+        scrollbar-width: thin;
+        scrollbar-color: var(--general-black) #fff;
+    }
+}
+
+body::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+body::-webkit-scrollbar-track {
+    background: 0 0;
+}
+
+body::-webkit-scrollbar-thumb {
+    background-color: var(--general-black);
+    border-radius: 32px;
+    border: 1px solid #fff;
+}
+
+body *::selection {
+    background: var(--general-black);
+    color: #fff;
+}
+
+/* Typography */
+
+.h1 {
+    @apply font-benzin font-semibold text-[56px] leading-[130%] tracking-default;
+}
+
+.text-default {
+    @apply text-[16px] leading-[150%] tracking-default;
+}
+
+.text-large {
+    @apply text-[18px] leading-[150%] tracking-default;
+}
+
+/* Container */
+
+@layer components {
+    .container {
+        @apply max-w-[1640px] mx-auto px-[64px] 
+              md:px-[24px];
+    }
+}
+
+/* IBG */
+
+.ibg {
+    position: relative;
+}
+
+.ibg img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
