@@ -1,0 +1,61 @@
+@use "shared/styles/mixins" as *;
+
+.nav {
+    min-width: 0;
+    margin-bottom: 8px;
+}
+
+.list {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px 0;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.item {
+    display: inline-flex;
+    align-items: center;
+    min-width: 0;
+
+    &:not(:last-child)::after {
+        content: "/";
+        margin: 0 12px;
+        color: rgba(14, 11, 11, 0.24);
+        font-family: var(--font-accent);
+        font-size: 12px;
+        line-height: 130%;
+    }
+}
+
+.link,
+.current,
+.linkText {
+    font-family: var(--font-accent);
+    font-size: 12px;
+    line-height: 130%;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
+.link {
+    color: rgba(14, 11, 11, 0.4);
+    transition: color var(--transition-base);
+
+    @media (hover: hover) {
+        &:hover,
+        &:focus-visible {
+            color: var(--general-red);
+        }
+    }
+}
+
+.linkText {
+    color: inherit;
+}
+
+.current {
+    color: var(--text-default);
+}

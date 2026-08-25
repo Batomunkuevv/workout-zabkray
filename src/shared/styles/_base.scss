@@ -1,0 +1,24 @@
+@supports not selector(::-webkit-scrollbar) {
+    body {
+        scrollbar-width: thin;
+        scrollbar-color: var(--general-black) #fff;
+    }
+}
+
+body::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+body::-webkit-scrollbar-track {
+    background: 0 0;
+}
+body::-webkit-scrollbar-thumb {
+    background-color: var(--general-black);
+    border-radius: 32px;
+    border: 1px solid #fff;
+}
+
+body *::selection {
+    background: var(--general-black);
+    color: #fff;
+}

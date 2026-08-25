@@ -1,0 +1,90 @@
+@use "shared/styles/mixins" as *;
+
+.program {
+    position: relative;
+    scroll-margin-top: var(--page-offset);
+    background: #f4f4f4;
+}
+
+.programGrid {
+    display: grid;
+    grid-template-columns: minmax(0, 0.85fr) minmax(460px, 1fr);
+    gap: 64px;
+    align-items: start;
+
+    @include max(lg) {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+}
+
+.sectionTitle {
+    max-width: 780px;
+
+    @include max(md) {
+        font-size: 38px;
+    }
+
+    @include max(sm) {
+        font-size: 30px;
+    }
+
+    @include max(2xs) {
+        font-size: 24px;
+    }
+}
+
+.aboutText {
+    max-width: 660px;
+    margin-top: 26px;
+    color: rgba(14, 11, 11, 0.72);
+    font-size: 18px;
+
+    @include max(sm) {
+        margin-top: 18px;
+        font-size: 16px;
+    }
+}
+
+.timeline {
+    display: grid;
+    gap: 14px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.timelineItem {
+    display: grid;
+    grid-template-columns: 92px minmax(0, 1fr);
+    gap: 24px;
+    padding: 26px;
+    border-radius: 24px;
+    background: #fff;
+
+    @include max(sm) {
+        grid-template-columns: 1fr;
+        gap: 14px;
+        padding: 22px;
+    }
+
+    .timelineTitle {
+        font-family: var(--font-accent);
+        font-size: 24px;
+        line-height: 130%;
+        letter-spacing: var(--letter-spacing-base);
+        text-transform: uppercase;
+    }
+}
+
+.timelineTime {
+    color: #d90000;
+    font-family: var(--font-accent);
+    font-size: 18px;
+    line-height: 130%;
+}
+
+.timelineText {
+    margin-top: 12px;
+    color: rgba(14, 11, 11, 0.66);
+}

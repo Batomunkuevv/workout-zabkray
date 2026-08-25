@@ -1,0 +1,13 @@
+.site-wrapper {
+    display: flex;
+    flex-direction: column;
+    overflow: clip;
+    min-height: 100vh;
+}
+
+.page {
+    display: flex;
+    flex: 1 1 auto;
+    flex-direction: column;
+}
+

@@ -1,0 +1,143 @@
+@use "shared/styles/mixins" as *;
+
+// Ниже StreetCursor (9999+)
+.root {
+    position: fixed;
+    inset: 0;
+    z-index: 1200;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 24px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    color: var(--general-black);
+
+    @include max(sm) {
+        padding: 0;
+        justify-content: flex-end;
+        align-items: stretch;
+    }
+}
+
+.backdrop {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    border: 0;
+    padding: 0;
+    background: rgb(14 11 11 / 72%);
+    cursor: pointer;
+}
+
+.panel {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    width: min(560px, 100%);
+    margin-block: auto;
+    padding: 32px;
+    border-radius: 24px;
+    background: #fff;
+    box-shadow: 0 24px 64px rgb(14 11 11 / 28%);
+    outline: none;
+
+    @include max(sm) {
+        width: 100%;
+        margin-block: 0;
+        padding: 24px 20px 28px;
+        border-radius: 24px 24px 0 0;
+    }
+}
+
+.header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 24px;
+    flex: none;
+
+    @include max(sm) {
+        margin-bottom: 20px;
+        gap: 12px;
+    }
+}
+
+.heading {
+    display: grid;
+    gap: 12px;
+    min-width: 0;
+    flex: 1 1 auto;
+    padding-right: 8px;
+
+    .title {
+        // Компактнее полного h3, иначе длинный заголовок выталкивает панель за край экрана
+        font-size: 28px;
+        line-height: 120%;
+        overflow-wrap: break-word;
+        hyphens: none;
+
+        @include max(sm) {
+            font-size: 24px;
+        }
+    }
+}
+
+.description {
+    color: rgba(14, 11, 11, 0.64);
+}
+
+.close {
+    flex: none;
+    margin-top: -4px;
+    margin-right: -8px;
+
+    @include min(xl) {
+        display: flex !important;
+    }
+}
+
+.panel--center {
+    .header {
+        position: relative;
+        display: block;
+        margin-bottom: 24px;
+        padding-right: 40px;
+
+        @include max(sm) {
+            margin-bottom: 20px;
+        }
+    }
+
+    .heading {
+        gap: 16px;
+        padding-right: 0;
+        text-align: center;
+    }
+
+    .description {
+        max-width: 360px;
+        margin-inline: auto;
+    }
+
+    .close {
+        position: absolute;
+        top: -4px;
+        right: -8px;
+        margin: 0;
+    }
+
+    .body {
+        display: grid;
+        justify-items: stretch;
+    }
+}
+
+.body {
+    min-height: 0;
+    overflow: visible;
+    padding-bottom: 8px;
+}

@@ -1,0 +1,263 @@
+@use "shared/styles/mixins" as *;
+
+.roster {
+    position: relative;
+    background: #fff;
+}
+
+.header,
+.list {
+    position: relative;
+    z-index: 2;
+}
+
+.header {
+    display: grid;
+    gap: 40px;
+    margin-bottom: 64px;
+
+    @include max(md) {
+        gap: 32px;
+        margin-bottom: 48px;
+    }
+
+    @include max(sm) {
+        gap: 24px;
+        margin-bottom: 40px;
+    }
+}
+
+.intro {
+    display: grid;
+    gap: 24px;
+    max-width: 820px;
+
+    @include max(md) {
+        gap: 20px;
+    }
+
+    @include max(sm) {
+        gap: 16px;
+    }
+}
+
+.title {
+    hyphens: none;
+
+    @include max(md) {
+        font-size: 34px;
+    }
+
+    @include max(sm) {
+        font-size: 28px;
+    }
+
+    @include max(2xs) {
+        font-size: 24px;
+    }
+}
+
+.lead {
+    max-width: 720px;
+    color: rgba(14, 11, 11, 0.72);
+}
+
+.list {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 24px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    align-items: stretch;
+
+    > li {
+        display: grid;
+    }
+
+    @include max(lg) {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 20px;
+    }
+
+    @include max(sm) {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+}
+
+.card {
+    display: grid;
+    grid-template-rows: auto 1fr;
+    height: 100%;
+    overflow: hidden;
+    border: 1px solid rgba(14, 11, 11, 0.1);
+    border-radius: 24px;
+    background: #fff;
+    box-shadow: 0 18px 56px rgba(14, 11, 11, 0.06);
+
+    @include max(sm) {
+        border-radius: 20px;
+    }
+}
+
+.media {
+    position: relative;
+    color: rgba(14, 11, 11, 0.48);
+    background: var(--general-black);
+}
+
+.image,
+.placeholder {
+    aspect-ratio: 4 / 5;
+    width: 100%;
+}
+
+.placeholder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.04) 0%, transparent 48%),
+        var(--general-black);
+}
+
+.initials {
+    font-family: var(--font-accent);
+    font-size: 48px;
+    line-height: 1;
+    letter-spacing: var(--letter-spacing-base);
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.16);
+}
+
+.mediaAccent {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 4px;
+    background: var(--general-red-gradient);
+}
+
+.body {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    min-width: 0;
+    height: 100%;
+    padding: 24px 24px 28px;
+
+    @include max(sm) {
+        gap: 12px;
+        padding: 20px 20px 24px;
+    }
+}
+
+.identity {
+    display: grid;
+    gap: 8px;
+}
+
+.role {
+    color: #d90000;
+    font-family: var(--font-accent);
+    font-size: 12px;
+    line-height: 130%;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
+.name {
+    font-family: var(--font-accent);
+    font-size: 24px;
+    line-height: 130%;
+    letter-spacing: var(--letter-spacing-base);
+    text-transform: uppercase;
+
+    @include max(xl) {
+        font-size: 20px;
+    }
+}
+
+.achievements {
+    display: grid;
+    gap: 12px;
+    margin: 4px 0 0;
+    padding: 16px 0 0;
+    border-top: 1px solid rgba(14, 11, 11, 0.08);
+    list-style: none;
+}
+
+.achievement {
+    display: grid;
+    grid-template-columns: minmax(72px, auto) minmax(0, 1fr) auto;
+    gap: 12px;
+    align-items: start;
+}
+
+.placeBadge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 24px;
+    padding: 4px 8px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    background: rgba(14, 11, 11, 0.06);
+    font-family: var(--font-accent);
+    font-size: 11px;
+    line-height: 130%;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: rgba(14, 11, 11, 0.56);
+}
+
+.achievement[data-place="1"] .placeBadge {
+    background: var(--medal-gold-bg);
+    border: 1px solid var(--medal-gold-border);
+    color: var(--medal-gold);
+}
+
+.achievement[data-place="2"] .placeBadge {
+    background: var(--medal-silver-bg);
+    border: 1px solid var(--medal-silver-border);
+    color: var(--medal-silver);
+}
+
+.achievement[data-place="3"] .placeBadge {
+    background: var(--medal-bronze-bg);
+    border: 1px solid var(--medal-bronze-border);
+    color: var(--medal-bronze);
+}
+
+.achievementBody {
+    display: grid;
+    gap: 4px;
+    min-width: 0;
+}
+
+.achievementEvent {
+    font-size: 14px;
+    line-height: 150%;
+    color: rgba(14, 11, 11, 0.8);
+}
+
+.achievementNote {
+    font-size: 12px;
+    line-height: 140%;
+    color: rgba(14, 11, 11, 0.44);
+}
+
+.achievementYear {
+    font-family: var(--font-accent);
+    font-size: 12px;
+    line-height: 150%;
+    letter-spacing: 0.08em;
+    color: rgba(14, 11, 11, 0.4);
+}
+
+.empty {
+    margin-top: 4px;
+    color: rgba(14, 11, 11, 0.4);
+}

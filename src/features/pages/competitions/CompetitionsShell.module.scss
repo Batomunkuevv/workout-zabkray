@@ -1,0 +1,20 @@
+@use "shared/styles/mixins" as *;
+
+.page {
+    --page-inset: 24px;
+    padding-top: var(--page-inset);
+    padding-inline: var(--page-inset);
+    background: #fff;
+
+    @include max(lg) {
+        --page-inset: 16px;
+    }
+
+    @include max(md) {
+        --page-inset: 8px;
+    }
+
+    @include max(2xs) {
+        --page-inset: 4px;
+    }
+}

@@ -1,0 +1,99 @@
+@use "shared/styles/mixins" as *;
+
+.field {
+    display: grid;
+    gap: 8px;
+    min-width: 0;
+
+    &[data-disabled="true"] {
+        opacity: 0.5;
+        pointer-events: none;
+    }
+}
+
+.labelRow {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+.label {
+    font-family: var(--font-accent);
+    font-size: 12px;
+    line-height: 130%;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
+.control {
+    width: 100%;
+    min-width: 0;
+    padding: 16px;
+    border: 1px solid transparent;
+    border-radius: 12px;
+    font-family: var(--font-base);
+    font-size: 16px;
+    line-height: 140%;
+    letter-spacing: var(--letter-spacing-base);
+    outline: none;
+    transition:
+        border-color var(--transition-base),
+        background var(--transition-base),
+        color var(--transition-base);
+
+    &::placeholder {
+        color: inherit;
+        opacity: 0.4;
+    }
+
+    &:focus-visible {
+        border-color: var(--general-red);
+    }
+}
+
+.field--light {
+    .label {
+        color: rgba(14, 11, 11, 0.48);
+    }
+
+    .control {
+        background: #f3f3f3;
+        color: var(--general-black);
+    }
+}
+
+.field--dark {
+    .label {
+        color: rgba(255, 255, 255, 0.48);
+    }
+
+    .control {
+        background: rgba(255, 255, 255, 0.08);
+        color: #fff;
+    }
+}
+
+.fieldInvalid {
+    .control {
+        border-color: var(--general-red);
+    }
+}
+
+.hint {
+    color: rgba(14, 11, 11, 0.48);
+
+    .field--dark & {
+        color: rgba(255, 255, 255, 0.48);
+    }
+}
+
+.error {
+    color: var(--general-red);
+}
+
+@include max(sm) {
+    .control {
+        padding: 14px 16px;
+    }
+}

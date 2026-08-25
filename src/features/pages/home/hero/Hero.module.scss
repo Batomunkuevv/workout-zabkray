@@ -1,0 +1,374 @@
+@use "shared/styles/mixins" as *;
+
+.hero {
+    --hero-inset: 24px;
+    padding: var(--hero-inset) var(--hero-inset) 0;
+
+    @include max(lg) {
+        --hero-inset: 16px;
+    }
+
+    @include max(md) {
+        --hero-inset: 8px;
+    }
+
+    @include max(2xs) {
+        --hero-inset: 4px;
+    }
+}
+
+.shell {
+    padding: 160px 0 29px;
+    margin: 0 auto;
+    max-width: min(1872px, 100%);
+    background: var(--general-black);
+    border-radius: 28px;
+    overflow: hidden;
+
+    @include max(2xl) {
+        padding: 150px 0 24px;
+    }
+
+    @include max(xl) {
+        padding: 125px 0 16px;
+    }
+
+    @include max(md) {
+        padding-bottom: 40px;
+    }
+
+    @include max(sm) {
+        padding: 117px 0 32px;
+    }
+
+    @include max(2xs) {
+        padding: 101px 0 32px;
+    }
+}
+
+.full-bleed {
+    margin: 0 calc(var(--hero-inset) * -1);
+}
+
+.header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 24px;
+    margin-bottom: 16px;
+
+    @include max(xl) {
+        margin-bottom: 20px;
+    }
+
+    @include max(sm) {
+        margin-bottom: 13px;
+        flex-direction: column;
+        gap: 16px;
+    }
+}
+
+.title {
+    flex: 1 1 auto;
+}
+
+.cta {
+    margin-top: -14px;
+    flex: none;
+    align-self: center;
+    max-width: 488px;
+
+    @include max(2xl) {
+        --cta-scale: 0.85;
+    }
+
+    @include max(xl) {
+        --cta-scale: 0.738;
+    }
+
+    @include max(md) {
+        display: none;
+    }
+}
+
+.cta-mobile {
+    display: none;
+
+    @include max(sm) {
+        display: block;
+        width: 100%;
+    }
+}
+
+.cta-tablet {
+    display: none;
+
+    @include between(sm, md) {
+        display: block;
+        flex: none;
+        align-self: stretch;
+        width: 100%;
+    }
+}
+
+.title-part-desktop {
+    @include max(sm) {
+        display: none;
+    }
+}
+
+.title-part-mobile {
+    @include min(sm) {
+        display: none;
+    }
+}
+
+.text {
+    margin-bottom: 48px;
+    max-width: 720px;
+
+    @include max(xl) {
+        margin-bottom: 40px;
+        max-width: 584px;
+    }
+}
+
+.bottom {
+    display: grid;
+    grid-template-columns: 1fr 32.3%;
+    align-items: stretch;
+    gap: 24px;
+    position: relative;
+    z-index: 1;
+
+    @include max(2xl) {
+        grid-template-columns: 1fr 31.8%;
+    }
+
+    @include max(xl) {
+        grid-template-columns: 1fr 35.6%;
+    }
+
+    @include max(md) {
+        display: flex;
+        flex-direction: column-reverse;
+        gap: 16px;
+    }
+
+    @include between(sm, md) {
+        gap: 32px;
+
+        .cta-tablet {
+            order: 1;
+        }
+
+        .image-col {
+            order: 2;
+        }
+
+        .advantages {
+            order: 3;
+        }
+    }
+
+    &::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        transform: translate(42%, 44%);
+        width: 280px;
+        aspect-ratio: 1/1;
+        background: url('/images/home/hero/star-gray.svg') 0 0 / 100% 100% no-repeat;
+        z-index: -1;
+
+        @include max(2xl) {
+            width: 208px;
+            transform: translate(12%, 42%);
+        }
+
+        @include max(lg) {
+            width: 160px;
+            transform: translate(0%, 50%);
+        }
+
+        @include max(md) {
+            transform: translate(20%, 70%);
+        }
+
+        @include max(sm) {
+            width: 100px;
+            transform: translate(26%, 71%);
+        }
+    }
+}
+
+.image-col {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+
+    @include min(md) {
+        align-self: stretch;
+        min-height: 100%;
+        height: 100%;
+
+        > :first-child {
+            display: flex;
+            flex: 1 1 auto;
+            flex-direction: column;
+            min-height: 0;
+            height: 100%;
+        }
+    }
+
+    @include between(sm, md) {
+        gap: 0;
+    }
+}
+
+.image-wrapper {
+    border-radius: 40px;
+    overflow: hidden;
+
+    @include min(md) {
+        width: 100%;
+        flex: 1 1 auto;
+        min-height: 0;
+        aspect-ratio: 1000 / 472;
+
+        @include max(2xl) {
+            aspect-ratio: 816 / 480;
+        }
+
+        @include max(lg) {
+            aspect-ratio: 584 / 360;
+        }
+    }
+
+    @include max(md) {
+        aspect-ratio: 688 / 424;
+        border-radius: 32px;
+    }
+
+    @include max(sm) {
+        border-radius: 24px;
+    }
+}
+
+.advantages {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+
+    @include min(md) {
+        align-self: stretch;
+        min-height: 100%;
+        height: 100%;
+    }
+
+    @media (hover: hover) {
+        &:has(.advantage:hover) .advantage:not(:hover) {
+            opacity: 0.4;
+        }
+    }
+
+    &.advantages-has-active .advantage:not(.advantage-active) {
+        opacity: 0.4;
+    }
+}
+
+@mixin advantage-active {
+    z-index: 2;
+    background-color: #fff;
+    border-color: #fff;
+
+    .advantage-text {
+        color: var(--text-default);
+    }
+
+    .advantage-icon {
+        color: rgba(14, 11, 11, 0.2);
+    }
+
+    .advantage-image {
+        opacity: 1;
+        visibility: visible;
+    }
+}
+
+.advantage {
+    padding: 26px 16px 16px 24px;
+    min-height: 100px;
+    border-radius: 24px;
+    color: #fff;
+    border: 1px solid var(--border-primary);
+    display: flex;
+    justify-content: space-between;
+    gap: 7px;
+    position: relative;
+    transition:
+        background-color var(--transition-base),
+        border-color var(--transition-base),
+        opacity var(--transition-base);
+
+    &:last-child {
+        flex: 1 1 auto;
+    }
+
+    &.advantage-active {
+        @include advantage-active;
+    }
+
+    @include max(md) {
+        cursor: pointer;
+    }
+
+    @media (hover: hover) {
+        &:hover {
+            @include advantage-active;
+        }
+    }
+}
+
+.advantage-text {
+    position: relative;
+    z-index: 1;
+    max-width: 348px;
+    transition: color var(--transition-base);
+
+    @include between(sm, md) {
+        max-width: 400px;
+    }
+}
+
+.advantage-icon {
+    position: relative;
+    z-index: 1;
+    width: 32px;
+    height: 32px;
+    flex: none;
+    align-self: end;
+    color: rgba(255, 255, 255, 0.2);
+    transition: color var(--transition-base);
+}
+
+.advantage-image {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 3;
+    transform: translate(-50%, -50%);
+    width: 49.17%;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition:
+        opacity var(--transition-base),
+        visibility var(--transition-base);
+}
+
+.advantage-image-wrapper {
+    aspect-ratio: 240 / 180;
+    border-radius: 24px;
+}

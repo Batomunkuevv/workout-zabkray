@@ -1,0 +1,76 @@
+@use "sass:map";
+@use "./variables" as *;
+
+@mixin ibg-padding($width, $height) {
+    padding-top: calc($height / $width) * 100%;
+}
+
+@mixin min($key) {
+    $bp: map.get($breakpoints, $key);
+
+    @if $bp == null {
+        @error "Breakpoint '#{$key}' not found";
+    }
+
+    @media (min-width: #{$bp}px) {
+        @content;
+    }
+}
+
+@mixin max($key) {
+    $bp: map.get($breakpoints, $key);
+
+    @if $bp == null {
+        @error "Breakpoint '#{$key}' not found";
+    }
+
+    @media (max-width: #{$bp}px) {
+        @content;
+    }
+}
+
+@mixin between($from, $to) {
+    $bp-from: map.get($breakpoints, $from);
+    $bp-to: map.get($breakpoints, $to);
+
+    @media (min-width: #{$bp-from}px) and (max-width: #{$bp-to}px) {
+        @content;
+    }
+}
+
+@mixin section-tag-layout {
+    position: absolute;
+    top: var(--section-tag-top, 0);
+    left: 0;
+    z-index: 5;
+
+    @include max(xl) {
+        position: static;
+        margin-bottom: 24px;
+    }
+}
+
+// Hero / Footer: боковой inset у viewport + фоновый shell внутри секции.
+@mixin page-bleed-inset {
+    --page-inset: 24px;
+
+    padding-inline: var(--page-inset);
+
+    @include max(lg) {
+        --page-inset: 16px;
+    }
+
+    @include max(md) {
+        --page-inset: 8px;
+    }
+
+    @include max(2xs) {
+        --page-inset: 4px;
+    }
+}
+
+@mixin page-bleed-container {
+    padding-inline: 0;
+    max-width: none;
+    width: 100%;
+}

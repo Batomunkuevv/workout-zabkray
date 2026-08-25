@@ -1,0 +1,23 @@
+@use "shared/styles/mixins" as *;
+
+.container {
+    min-width: 0;
+    padding: 0 64px;
+    margin: 0 auto;
+    max-width: 1640px;
+
+    @include max(2xl) {
+        padding: 0 104px;
+    }
+
+    @include max(xl) {
+        padding: 0 40px;
+    }
+    @include max(sm) {
+        padding: 0 27px;
+    }
+
+    @include max(2xs) {
+        padding: 0 30px;
+    }
+}

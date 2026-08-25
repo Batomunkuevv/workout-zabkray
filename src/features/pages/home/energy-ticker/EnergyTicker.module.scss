@@ -1,0 +1,138 @@
+@use "shared/styles/mixins" as *;
+
+.ticker {
+    --ticker-height: 88px;
+    --ticker-gap: 48px;
+
+    // Перехлёст с соседними секциями пропорционален --section-gap
+    margin-block: calc(var(--section-gap) * -0.8) calc(var(--section-gap) * -0.4);
+    overflow: hidden;
+    background: #fff;
+
+    @include max(lg) {
+        --ticker-height: 80px;
+        --ticker-gap: 40px;
+    }
+
+    @include max(sm) {
+        --ticker-height: 64px;
+        --ticker-gap: 32px;
+    }
+}
+
+.shell {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: calc(100% + 80px);
+    min-height: var(--ticker-height);
+    margin-left: -40px;
+    background: var(--general-red-gradient);
+    color: #fff;
+    transform: skewX(-12deg);
+    transform-origin: center;
+
+    &::before,
+    &::after {
+        content: "";
+        position: absolute;
+        inset-block: 0;
+        z-index: 2;
+        width: 96px;
+        pointer-events: none;
+    }
+
+    &::before {
+        left: 0;
+        background: linear-gradient(90deg, var(--general-red) 0%, rgb(217 0 0 / 0%) 100%);
+    }
+
+    &::after {
+        right: 0;
+        background: linear-gradient(270deg, var(--general-red) 0%, rgb(217 0 0 / 0%) 100%);
+    }
+
+    @include max(sm) {
+        &::before,
+        &::after {
+            width: 48px;
+        }
+    }
+}
+
+.track {
+    display: flex;
+    width: max-content;
+    min-width: 200%;
+    animation: ticker-run 24s linear infinite;
+    will-change: transform;
+}
+
+.line {
+    display: flex;
+    flex: 0 0 auto;
+    align-items: center;
+    gap: var(--ticker-gap);
+    margin: 0;
+    padding: 0 var(--ticker-gap) 0 0;
+    list-style: none;
+}
+
+.item {
+    position: relative;
+    display: flex;
+    flex: 0 0 auto;
+    align-items: center;
+    gap: var(--ticker-gap);
+    white-space: nowrap;
+    text-transform: uppercase;
+
+    &::after {
+        content: "//";
+        flex: 0 0 auto;
+        color: rgb(255 255 255 / 72%);
+        font-family: var(--font-accent);
+        font-size: 24px;
+        line-height: 100%;
+        letter-spacing: 0;
+    }
+
+    span {
+        font-size: 32px;
+        line-height: 100%;
+        letter-spacing: 0.08em;
+    }
+
+    @include max(lg) {
+        span {
+            font-size: 28px;
+        }
+    }
+
+    @include max(sm) {
+        &::after {
+            font-size: 16px;
+        }
+
+        span {
+            font-size: 20px;
+        }
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .track {
+        animation: none;
+        transform: translateX(0);
+    }
+}
+
+@keyframes ticker-run {
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateX(-50%);
+    }
+}

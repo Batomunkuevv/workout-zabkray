@@ -1,0 +1,59 @@
+@use "shared/styles/mixins" as *;
+
+.root {
+    display: block;
+    width: 100%;
+    max-width: 160px;
+
+    @include max(lg) {
+        max-width: 136px;
+    }
+
+    @include max(sm) {
+        max-width: 120px;
+    }
+
+    @include max(2xs) {
+        max-width: 112px;
+    }
+}
+
+.stack {
+    position: relative;
+    display: block;
+    width: 100%;
+    aspect-ratio: 160 / 48;
+}
+
+.wrapper {
+    aspect-ratio: 160 / 48;
+}
+
+.layer {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    opacity: 0;
+    transition: opacity var(--transition-base);
+    pointer-events: none;
+}
+
+.layerOnDark,
+.layerOnLight {
+    opacity: 0;
+}
+
+.root[data-variant="onDark"] .layerOnDark,
+.root[data-variant="onLight"] .layerOnLight {
+    opacity: 1;
+}
+
+:global(body:has([data-header-theme="light"]) header) .root[data-variant="onDark"] {
+    .layerOnDark {
+        opacity: 0;
+    }
+
+    .layerOnLight {
+        opacity: 1;
+    }
+}

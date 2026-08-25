@@ -1,0 +1,162 @@
+@use "shared/styles/globals" as *;
+
+.header {
+    --header-inset: 48px;
+    --header-offset: var(--header-inset);
+    --header-top: var(--header-inset);
+    --nav-link-color: #fff;
+    --nav-link-underline: linear-gradient(90deg, #fff 0%, rgb(255 255 255 / 60%) 100%);
+    padding: 0 var(--header-inset);
+    position: fixed;
+    top: var(--header-top);
+    width: 100%;
+    z-index: 100;
+
+    @include max(xl) {
+        --header-inset: 32px;
+    }
+
+    @include max(md) {
+        --header-inset: 24px;
+        --header-offset: var(--header-inset);
+        padding: 0;
+        top: 0;
+        transform: translateY(var(--header-offset));
+        will-change: transform;
+    }
+
+    @include max(2xs) {
+        --header-inset: 20px;
+    }
+
+    &.isScrolled {
+        --nav-link-color: var(--general-black);
+        --nav-link-underline: linear-gradient(90deg, var(--general-black) 0%, rgb(14 11 11 / 60%) 100%);
+
+        .shell {
+            background: #fff;
+            box-shadow: 0 8px 32px rgb(14 11 11 / 12%);
+        }
+
+        .button {
+            background: var(--general-red-gradient);
+            color: #fff;
+
+            &:hover {
+                color: #fff;
+            }
+        }
+    }
+}
+
+:global(body:has([data-header-theme="light"])) {
+    .header:not(.isScrolled) {
+        --nav-link-color: var(--general-black);
+        --nav-link-underline: linear-gradient(90deg, var(--general-black) 0%, rgb(14 11 11 / 60%) 100%);
+
+        .button {
+            background: var(--general-red-gradient);
+            color: #fff;
+
+            &:hover {
+                color: #fff;
+            }
+        }
+    }
+}
+
+.shell {
+    --shell-y-inset: 8px;
+    --shell-x-inset: 8px;
+    padding: var(--shell-y-inset) var(--shell-x-inset);
+    margin: 0 auto;
+    max-width: 1824px;
+    border-radius: 16px;
+    box-shadow: none;
+    transition:
+        background var(--transition-base),
+        box-shadow var(--transition-base);
+
+    @include max(md) {
+        --shell-x-inset: 0;
+        border-radius: 0 0 16px 16px;
+        transition:
+            background var(--transition-base),
+            box-shadow var(--transition-base);
+    }
+}
+
+.fullBleed {
+    @include min(md) {
+        margin: 0 calc(-1 * var(--header-inset) - var(--shell-x-inset));
+    }
+}
+
+.body {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+
+    @include max(xl) {
+        justify-content: space-between;
+        gap: 32px;
+    }
+}
+
+.logo {
+    margin-right: 0;
+    flex: none;
+    width: 100%;
+    max-width: 160px;
+
+    @include between(sm, xl) {
+        padding: 4px 0;
+    }
+
+    @include min(2xl) {
+        margin-right: 40px;
+    }
+
+    @include max(lg) {
+        max-width: 136px;
+    }
+
+    @include max(sm) {
+        max-width: 120px;
+    }
+
+    @include max(2xs) {
+        max-width: 112px;
+    }
+}
+
+.desktopNavigation {
+    @include max(xl) {
+        display: none;
+    }
+}
+
+.actions {
+    display: flex;
+    align-items: center;
+    flex: none;
+    gap: 24px;
+
+    @include min(2xl) {
+        gap: 32px;
+    }
+}
+
+.socials {
+    margin: -2px 0;
+
+    @include max(2xl) {
+        display: none;
+    }
+}
+
+.button {
+    @include max(xs) {
+        display: none;
+    }
+}

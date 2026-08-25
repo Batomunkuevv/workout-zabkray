@@ -1,0 +1,33 @@
+@use "shared/styles/mixins" as *;
+
+.panel {
+    width: min(520px, 100%);
+}
+
+.form {
+    display: grid;
+    gap: 20px;
+}
+
+.policyLink {
+    color: var(--general-black);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    transition: color var(--transition-base);
+
+    @media (hover: hover) {
+        &:hover {
+            color: var(--general-red);
+        }
+    }
+}
+
+.formError {
+    color: var(--general-red);
+}
+
+.submit {
+    width: 100%;
+    min-height: 56px;
+    margin-top: 16px;
+}

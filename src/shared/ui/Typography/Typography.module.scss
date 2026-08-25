@@ -1,0 +1,107 @@
+@use "shared/styles/globals" as *;
+
+.root {
+    margin: 0;
+}
+
+/* tones */
+
+.default {
+    color: var(--text-default);
+}
+
+.inverse {
+    color: var(--text-inverse);
+}
+
+/* variants */
+
+.h1,
+.h2,
+.h3 {
+    font-weight: 600;
+    letter-spacing: var(--letter-spacing-base);
+    text-transform: uppercase;
+
+    @include max(sm) {
+        hyphens: auto;
+    }
+}
+
+.h1 {
+    font-family: var(--font-accent);
+    font-size: 56px;
+    line-height: 130%;
+    font-weight: 600;
+
+    @include max(2xl) {
+        font-size: 48px;
+        letter-spacing: normal;
+    }
+
+    @include max(xl) {
+        font-size: 32px;
+    }
+
+    @include max(2xs) {
+        font-size: 28px;
+    }
+}
+
+.h2 {
+    font-family: var(--font-accent);
+    font-size: 48px;
+    line-height: 130%;
+
+    @include max(2xl) {
+        font-size: 40px;
+    }
+
+    @include max(xl) {
+        font-size: 32px;
+    }
+
+    @include max(2xs) {
+        font-size: 24px;
+    }
+}
+
+.h3 {
+    font-family: var(--font-accent);
+    font-size: 40px;
+    line-height: 130%;
+
+    @include max(2xl) {
+        font-size: 32px;
+    }
+
+    @include max(xl) {
+        font-size: 28px;
+    }
+
+    @include max(2xs) {
+        font-size: 24px;
+    }
+}
+
+.body {
+    font-family: var(--font-base);
+    font-size: 16px;
+    line-height: 150%;
+    letter-spacing: var(--letter-spacing-base);
+}
+
+.bodyLarge {
+    font-family: var(--font-base);
+    font-size: 18px;
+    line-height: 150%;
+    letter-spacing: var(--letter-spacing-base);
+
+    @include max(xl) {
+        font-size: 16px;
+    }
+
+    @include max(2xs) {
+        font-size: 14px;
+    }
+}

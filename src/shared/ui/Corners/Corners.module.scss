@@ -1,0 +1,48 @@
+.corners {
+    --corner-size: 8px;
+    --corner-radius: 4px;
+    --corner-stroke: 1px;
+
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+}
+
+.corner {
+    position: absolute;
+    width: var(--corner-size);
+    height: var(--corner-size);
+    border-color: currentColor;
+}
+
+.topLeft {
+    top: 0;
+    left: 0;
+    border-top: var(--corner-stroke) solid;
+    border-left: var(--corner-stroke) solid;
+    border-top-left-radius: var(--corner-radius);
+}
+
+.topRight {
+    top: 0;
+    right: 0;
+    border-top: var(--corner-stroke) solid;
+    border-right: var(--corner-stroke) solid;
+    border-top-right-radius: var(--corner-radius);
+}
+
+.bottomRight {
+    bottom: 0;
+    right: 0;
+    border-bottom: var(--corner-stroke) solid;
+    border-right: var(--corner-stroke) solid;
+    border-bottom-right-radius: var(--corner-radius);
+}
+
+.bottomLeft {
+    bottom: 0;
+    left: 0;
+    border-bottom: var(--corner-stroke) solid;
+    border-left: var(--corner-stroke) solid;
+    border-bottom-left-radius: var(--corner-radius);
+}

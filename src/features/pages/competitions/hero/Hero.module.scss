@@ -1,0 +1,158 @@
+@use "shared/styles/mixins" as *;
+
+.hero {
+    margin-inline: calc(var(--page-inset) * -1);
+
+    @include page-bleed-inset;
+}
+
+.shell {
+    max-width: min(1872px, 100%);
+    margin: 0 auto;
+    padding: 156px 0 72px;
+    overflow: hidden;
+    border-radius: 28px;
+    background: linear-gradient(135deg, #0e0b0b 0%, #171111 54%, #0e0b0b 100%);
+
+    @include max(2xl) {
+        padding: 152px 0 64px;
+    }
+
+    @include max(lg) {
+        padding: 142px 0 56px;
+    }
+
+    @include max(xl) {
+        padding: 128px 0 48px;
+    }
+
+    @include max(md) {
+        padding-bottom: 56px;
+    }
+
+    @include max(sm) {
+        padding: 122px 0 48px;
+    }
+}
+
+.fullBleed {
+    margin: 0 calc(var(--page-inset) * -1);
+}
+
+.heroGrid {
+    position: relative;
+    display: grid;
+    grid-template-columns: minmax(0, 0.92fr) minmax(360px, 0.56fr);
+    min-width: 0;
+    gap: 72px;
+    align-items: end;
+
+    @include max(lg) {
+        grid-template-columns: 1fr;
+        gap: 42px;
+    }
+}
+
+.header,
+.stats {
+    position: relative;
+    z-index: 2;
+    min-width: 0;
+}
+
+.header {
+    max-width: 920px;
+}
+
+.eyebrow {
+    display: inline-flex;
+    width: fit-content;
+    margin-bottom: 24px;
+    padding: 8px 13px;
+    border: 1px solid rgba(255, 255, 255, 0.24);
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.08);
+    font-family: var(--font-accent);
+    font-size: 13px;
+    line-height: 130%;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.title {
+    max-width: 860px;
+    margin-bottom: 32px;
+}
+
+.text {
+    max-width: 740px;
+    color: rgba(255, 255, 255, 0.74);
+}
+
+.stats {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    border: 1px solid rgba(14, 11, 11, 0.08);
+    border-radius: 24px;
+    list-style: none;
+    background: #fff;
+    box-shadow: 0 20px 48px rgba(14, 11, 11, 0.08);
+
+    @include max(sm) {
+        border-radius: 20px;
+    }
+
+    li {
+        position: relative;
+        display: grid;
+        gap: 12px;
+        align-content: center;
+        min-height: 132px;
+        padding: 26px 24px 28px;
+        border-top: none;
+        background: linear-gradient(180deg, #fafafa 0%, #f3f3f3 100%);
+
+        @include max(sm) {
+            padding: 16px 12px;
+            min-height: 86px;
+        }
+
+        &:not(:first-child)::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: rgba(14, 11, 11, 0.06);
+        }
+    }
+
+    strong {
+        color: var(--text-default);
+        font-family: var(--font-accent);
+        font-size: clamp(20px, 2vw, 24px);
+        font-weight: 700;
+        line-height: 118%;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+    }
+
+    span {
+        max-width: 260px;
+        color: rgba(14, 11, 11, 0.55);
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 150%;
+        text-transform: lowercase;
+
+        @include max(sm) {
+            font-size: 12px;
+        }
+    }
+}

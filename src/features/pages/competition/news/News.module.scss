@@ -1,0 +1,102 @@
+@use "shared/styles/mixins" as *;
+
+.news {
+    position: relative;
+    background: #fff;
+}
+
+.sectionHeader {
+    display: flex;
+    justify-content: space-between;
+    gap: 40px;
+    align-items: end;
+    margin-bottom: 48px;
+
+    .sectionLead {
+        margin-top: 0;
+    }
+
+    @include max(lg) {
+        display: grid;
+        align-items: start;
+    }
+}
+
+.sectionTitle {
+    max-width: 780px;
+
+    @include max(md) {
+        font-size: 38px;
+    }
+
+    @include max(sm) {
+        font-size: 30px;
+    }
+
+    @include max(2xs) {
+        font-size: 24px;
+    }
+}
+
+.sectionLead {
+    max-width: 660px;
+    margin-top: 26px;
+    color: rgba(14, 11, 11, 0.72);
+    font-size: 18px;
+
+    @include max(sm) {
+        margin-top: 18px;
+        font-size: 16px;
+    }
+}
+
+.newsGrid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 18px;
+
+    @include max(lg) {
+        grid-template-columns: 1fr;
+    }
+}
+
+.newsText {
+    margin-top: 12px;
+    color: rgba(14, 11, 11, 0.66);
+}
+
+.newsCard {
+    min-height: 270px;
+    padding: 28px;
+    border: 1px solid rgba(14, 11, 11, 0.1);
+    border-radius: 28px;
+    background: #fff;
+
+    .newsTitle {
+        font-family: var(--font-accent);
+        font-size: 24px;
+        line-height: 130%;
+        letter-spacing: var(--letter-spacing-base);
+        text-transform: uppercase;
+    }
+
+    &:first-child {
+        background: var(--general-black);
+
+        .newsLabel,
+        .newsTitle,
+        .newsText {
+            color: #fff;
+        }
+    }
+}
+
+.newsLabel {
+    display: inline-flex;
+    margin-bottom: 44px;
+    color: #d90000;
+    font-family: var(--font-accent);
+    font-size: 13px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+}

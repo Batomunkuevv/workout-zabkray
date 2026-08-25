@@ -1,0 +1,108 @@
+.pulse {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 9999;
+    width: 40px;
+    height: 40px;
+    pointer-events: none;
+    opacity: 0;
+    color: var(--sc-dot-color, #e80000);
+    transform-origin: 50% 50%;
+    transition: opacity 0.16s ease;
+    will-change: transform;
+
+    &[data-visible="true"] {
+        opacity: 1;
+    }
+}
+
+.pulseRing {
+    position: absolute;
+    inset: 8px;
+    border: 2px solid currentColor;
+    border-radius: 999px;
+    opacity: 0.2;
+    transform: scale(1);
+    transition:
+        opacity 0.16s ease,
+        transform 0.16s ease;
+    transform-origin: 50% 50%;
+
+    .pulse[data-mode="interactive"] & {
+        opacity: 0.32;
+        transform: scale(1.04);
+    }
+
+    .pulse[data-hit="true"] & {
+        animation: street-cursor-impact 0.32s ease-out;
+    }
+}
+
+.dot {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 10000;
+    width: 16px;
+    height: 16px;
+    margin-top: -8px;
+    margin-left: -8px;
+    pointer-events: none;
+    opacity: 0;
+    color: var(--sc-dot-color, #e80000);
+    transform-origin: 50% 50%;
+    --sc-mark-scale: 1;
+    transition: opacity 0.16s ease;
+    will-change: transform;
+
+    &[data-visible="true"] {
+        opacity: 1;
+    }
+
+    &[data-pressed="true"] {
+        transition-duration: 0.08s;
+    }
+
+    &[data-mode="interactive"] {
+        --sc-mark-scale: 1.16;
+    }
+}
+
+.mark {
+    display: block;
+    width: 100%;
+    height: 100%;
+    animation: street-cursor-spin 1.2s linear infinite;
+    transform-origin: 50% 50%;
+    will-change: transform;
+}
+
+@keyframes street-cursor-spin {
+    from {
+        transform: rotate(0deg) scale(var(--sc-mark-scale));
+    }
+
+    to {
+        transform: rotate(360deg) scale(var(--sc-mark-scale));
+    }
+}
+
+@keyframes street-cursor-impact {
+    0% {
+        opacity: 0.72;
+        transform: scale(0.64);
+    }
+
+    100% {
+        opacity: 0;
+        transform: scale(1.36);
+    }
+}
+
+@media (prefers-reduced-motion: reduce), (hover: none), (pointer: coarse) {
+    .pulse,
+    .dot {
+        display: none;
+    }
+}

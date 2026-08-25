@@ -1,0 +1,421 @@
+@use "shared/styles/mixins" as *;
+
+.section {
+    position: relative;
+    scroll-margin-top: var(--page-offset);
+    background: #fff;
+}
+
+.tag {
+    @include section-tag-layout;
+    z-index: 6;
+}
+
+.title {
+    max-width: 900px;
+    hyphens: none;
+
+    @include max(sm) {
+        letter-spacing: 0.02em;
+    }
+}
+
+.content {
+    margin-top: 75px;
+    display: grid;
+    grid-template-columns: minmax(0, 488fr) minmax(0, 1000fr);
+    gap: 24px;
+    align-items: end;
+
+    @include max(lg) {
+        grid-template-columns: 1fr;
+        gap: 48px;
+        margin-top: 48px;
+    }
+
+    @include max(sm) {
+        gap: 32px;
+        margin-top: 32px;
+    }
+}
+
+.visual {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 488px;
+
+    @include max(lg) {
+        order: 2;
+        max-width: none;
+    }
+}
+
+.visualMain {
+    width: 100%;
+}
+
+.boy {
+    position: relative;
+    z-index: 2;
+    width: 332px;
+    height: 388px;
+    margin-left: 78px;
+
+    @include max(xl) {
+        width: 300px;
+        height: 352px;
+        margin-left: 64px;
+    }
+
+    @include max(md) {
+        width: 280px;
+        height: 328px;
+        margin-left: 48px;
+    }
+
+    @include max(lg) {
+        width: min(100%, 320px);
+        height: 376px;
+        margin-left: 48px;
+    }
+
+    @include max(sm) {
+        width: min(100%, 272px);
+        height: 320px;
+        margin-left: 80px;
+    }
+
+    @include max(2xs) {
+        width: min(100%, 248px);
+        height: 296px;
+        margin-left: 72px;
+    }
+}
+
+.easy {
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: rotate(180deg) translate(-21%, 2.6%) !important;
+    z-index: 1;
+    font-family: var(--font-accent);
+    font-size: 96px;
+    line-height: 1;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    background: var(--easy-red-gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+    writing-mode: vertical-rl;
+    user-select: none;
+    pointer-events: none;
+
+    @include max(xl) {
+        font-size: 104px;
+    }
+
+    @include max(lg) {
+        top: 0;
+        bottom: auto;
+        left: 0;
+        font-size: 72px;
+    }
+
+    @include max(2xs) {
+        font-size: 64px;
+    }
+}
+
+.cta {
+    position: relative;
+    z-index: 3;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    margin-top: -20px;
+    padding: 32px 24px;
+    border-radius: 24px;
+    background: var(--general-red-gradient);
+
+    @include max(xl) {
+        padding: 24px;
+        gap: 24px;
+    }
+
+    @include max(lg) {
+        margin-top: -20px;
+    }
+
+    @include max(sm) {
+        margin-top: -16px;
+        padding: 24px 16px;
+        gap: 20px;
+        border-radius: 20px;
+    }
+}
+
+.ctaTitle {
+    font-size: 24px;
+    line-height: 141.66%;
+    font-weight: 500;
+    text-transform: uppercase;
+
+    @include max(xl) {
+        font-size: 20px;
+    }
+
+    @include max(lg) {
+        max-width: 600px;
+    }
+
+    @include max(sm) {
+        font-size: 18px;
+    }
+}
+
+.ctaAction {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 16px;
+    align-self: flex-end;
+    width: 100%;
+    max-width: 253px;
+
+    @include max(sm) {
+        align-self: stretch;
+        max-width: none;
+        justify-content: flex-start;
+    }
+}
+
+.ctaMark {
+    display: block;
+    width: 40px;
+    height: 40px;
+    flex-shrink: 0;
+
+    @include max(sm) {
+        width: 32px;
+        height: 32px;
+    }
+}
+
+.ctaButton {
+    flex-shrink: 0;
+}
+
+.stepsArea {
+    position: relative;
+    min-width: 0;
+
+    @include max(lg) {
+        order: 1;
+    }
+
+    &::before {
+        content: "";
+        position: absolute;
+        top: 316px;
+        right: 0;
+        z-index: 1;
+        width: 232px;
+        height: 232px;
+        background: url("/images/home/getting-started/pseudo.svg") no-repeat center / contain;
+        pointer-events: none;
+
+        @include max(xl) {
+            width: 200px;
+            height: 200px;
+        }
+
+        @include max(md) {
+            width: 160px;
+            height: 160px;
+        }
+
+        @include max(lg) {
+            display: none;
+        }
+    }
+}
+
+.steps {
+    position: relative;
+    z-index: 2;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 24px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+
+    @include max(lg) {
+        grid-template-columns: 1fr;
+        row-gap: 32px;
+    }
+
+    @include max(sm) {
+        row-gap: 24px;
+    }
+}
+
+.step {
+    position: relative;
+    min-width: 0;
+    padding: 32px 16px;
+    border-radius: 24px;
+    background: #f5f5f5;
+
+    &:nth-child(1) {
+        grid-column: 1;
+        grid-row: 1;
+    }
+
+    &:nth-child(2) {
+        grid-column: 2;
+        grid-row: 2;
+    }
+
+    &:nth-child(3) {
+        grid-column: 1;
+        grid-row: 3;
+        padding-bottom: 40px;
+    }
+
+    &:not(:first-child) {
+        margin-top: -60px;
+
+        @include max(lg) {
+            margin-top: 0;
+        }
+    }
+
+    &[data-step="1"]::after {
+        content: "";
+        position: absolute;
+        bottom: 85px;
+        left: calc(100% + 24px);
+        width: 90px;
+        height: 48px;
+        background: url("/images/home/getting-started/first-arrow.svg") no-repeat center / contain;
+        pointer-events: none;
+    }
+
+    &[data-step="2"]::after {
+        content: "";
+        position: absolute;
+        top: calc(100% + 26px);
+        left: 0;
+        width: 80px;
+        height: 56px;
+        background: url("/images/home/getting-started/second-arrow.svg") no-repeat center / contain;
+        pointer-events: none;
+    }
+
+    @include max(lg) {
+        &:nth-child(1),
+        &:nth-child(2),
+        &:nth-child(3) {
+            grid-column: 1;
+            grid-row: auto;
+        }
+
+        padding-bottom: 32px;
+
+        &:nth-child(3) {
+            padding-bottom: 32px;
+        }
+
+        &[data-step="1"]::after {
+            left: auto;
+            bottom: 0;
+            right: 0;
+            width: 64px;
+            height: 36px;
+            transform: rotate(70deg) translate(30%, -59%);
+        }
+
+        &[data-step="2"]::after {
+            top: auto;
+            bottom: 0;
+            left: 0;
+            width: 56px;
+            height: 40px;
+            transform: scale(-1, 1)rotate(-65deg) translate(-21%, 89%);
+        }
+    }
+
+    @include max(md) {
+        padding: 24px 16px;
+        border-radius: 20px;
+    }
+
+    @include max(sm) {
+        &[data-step="1"]::after {
+            width: 48px;
+            height: 28px;
+        }
+
+        &[data-step="2"]::after {
+            bottom: -14px;
+            width: 40px;
+            height: 32px;
+        }
+    }
+}
+
+.stepHead {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+}
+
+.stepIndex {
+    flex-shrink: 0;
+    font-size: 16px;
+    line-height: 1;
+    font-weight: 400;
+    background: var(--general-red-gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+
+    @include max(sm) {
+        font-size: 14px;
+    }
+}
+
+.stepTitle {
+    font-family: var(--font-accent);
+    font-size: 16px;
+    line-height: 1.3;
+    font-weight: 500;
+    letter-spacing: var(--letter-spacing-base);
+    text-transform: uppercase;
+
+    @include max(sm) {
+        font-size: 14px;
+    }
+}
+
+.stepText {
+    margin-top: 24px;
+    margin-left: 48px;
+    color: var(--text-default);
+    line-height: 1.5;
+
+    @include max(lg) {
+        margin-left: 0;
+    }
+
+    @include max(md) {
+        margin-top: 16px;
+    }
+}

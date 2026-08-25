@@ -1,0 +1,296 @@
+@use "shared/styles/mixins" as *;
+
+.about {
+    position: relative;
+    scroll-margin-top: var(--page-offset);
+    background: #fff;
+}
+
+.tag {
+    @include section-tag-layout;
+}
+
+.inner {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 488px;
+    grid-template-areas:
+        "head aside"
+        "visual aside";
+    column-gap: 24px;
+    row-gap: 80px;
+    align-items: start;
+
+    @include max(xl) {
+        grid-template-columns: minmax(0, 1fr) 400px;
+        row-gap: 56px;
+    }
+
+    @include max(lg) {
+        grid-template-columns: minmax(0, 1fr) 344px;
+        row-gap: 64px;
+    }
+
+    @include max(sm) {
+        grid-template-columns: 1fr;
+        grid-template-areas:
+            "head"
+            "visual"
+            "aside";
+        row-gap: 32px;
+    }
+}
+
+.head {
+    grid-area: head;
+    max-width: 1000px;
+
+    @include max(xl) {
+        max-width: 920px;
+    }
+
+    @include max(lg) {
+        max-width: none;
+    }
+}
+
+.title {
+    margin-bottom: 80px;
+    margin-right: -24px;
+    hyphens: none;
+
+    @include max(xl) {
+        max-width: 920px;
+    }
+
+    @include max(lg) {
+        margin-bottom: 64px;
+        max-width: 704px;
+    }
+
+    @include max(sm) {
+        margin-bottom: 32px;
+        max-width: none;
+    }
+}
+
+.text {
+    max-width: 1000px;
+    hyphens: none;
+
+    @include max(xl) {
+        max-width: 816px;
+    }
+
+    @include max(lg) {
+        max-width: 584px;
+    }
+
+    @include max(sm) {
+        max-width: none;
+    }
+}
+
+.visual {
+    grid-area: visual;
+    position: relative;
+    padding-left: 128px;
+
+    @include max(xl) {
+        padding-left: 104px;
+    }
+
+    @include max(lg) {
+        padding-left: 0;
+    }
+
+    @include between(xs, sm) {
+        padding-left: 96px;
+    }
+}
+
+.spark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    width: 232px;
+    aspect-ratio: 1;
+    background: url("/images/home/about/spark.svg") center / contain no-repeat;
+
+    @include max(xl) {
+        width: 192px;
+    }
+
+    @include max(sm) {
+        width: 128px;
+    }
+
+    @include max(xs) {
+        display: none;
+    }
+}
+
+.main-image {
+    position: relative;
+    z-index: 2;
+    width: min(100%, 744px);
+    margin-top: 128px;
+    aspect-ratio: 744 / 448;
+    border-radius: 32px;
+    overflow: hidden;
+
+    @include max(xl) {
+        width: min(100%, 608px);
+        margin-top: 96px;
+        aspect-ratio: 608 / 366;
+    }
+
+    @include max(lg) {
+        width: min(calc(100% - 129px), 480px);
+        margin-top: 72px;
+        margin-left: 129px;
+        aspect-ratio: 343 / 206;
+    }
+
+    @include max(sm) {
+        width: 100%;
+        margin-top: 0;
+        margin-left: 0;
+        aspect-ratio: 744 / 448;
+        border-radius: 24px;
+    }
+
+    @include between(xs, sm) {
+        width: 100%;
+        margin-top: 48px;
+        margin-left: 0;
+    }
+}
+
+.aside {
+    grid-area: aside;
+    position: relative;
+    width: 488px;
+    max-width: 100%;
+    min-height: 632px;
+    margin-top: 184px;
+    justify-self: end;
+
+    @include max(xl) {
+        width: 400px;
+        min-height: 752px;
+        margin-top: 136px;
+    }
+
+    @include max(lg) {
+        width: 344px;
+        min-height: 857px;
+        margin-top: 0;
+    }
+
+    @include max(sm) {
+        width: 100%;
+        min-height: auto;
+    }
+}
+
+.region {
+    position: absolute;
+    top: 0;
+    left: 91px;
+    z-index: 1;
+    width: 600px;
+    aspect-ratio: 600/632;
+    background: url("/images/home/about/region.svg") center / 100% 100% no-repeat;
+    pointer-events: none;
+
+    @include max(xl) {
+        top: 96px;
+        left: 0;
+        width: 504px;
+
+    }
+
+    @include max(lg) {
+        top: -46px;
+        left: auto;
+        right: 0;
+        width: 30vw;
+
+    }
+
+    @include max(sm) {
+        top: -30px;
+        right: -24px;
+        width: min(72%, 320px);
+        height: auto;
+    }
+}
+
+.mission {
+    position: absolute;
+    top: 214px;
+    left: 0;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    width: 100%;
+    padding: 16px 16px 40px;
+    border-radius: 32px;
+    background: #f5f5f5;
+
+    @include max(xl) {
+        top: 232px;
+    }
+
+    @include max(lg) {
+        top: 337px;
+    }
+
+    @include max(sm) {
+        position: relative;
+        top: auto;
+        margin-top: 32px;
+    }
+}
+
+.mission-photo {
+    position: relative;
+    height: 180px;
+
+    @include max(sm) {
+        height: 160px;
+    }
+
+    @include max(xs) {
+        height: 144px;
+    }
+}
+
+.mission-image-root {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 227px;
+    height: 100%;
+
+    @include max(sm) {
+        width: min(50%, 200px);
+    }
+
+    @include max(xs) {
+        width: 144px;
+    }
+}
+
+.mission-image {
+    height: 100%;
+    border-radius: 24px;
+    overflow: hidden;
+}
+
+.mission-text {
+    line-height: 150%;
+    hyphens: none;
+}

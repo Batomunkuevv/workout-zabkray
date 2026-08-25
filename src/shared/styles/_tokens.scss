@@ -1,0 +1,28 @@
+:root {
+    --general-black: #0e0b0b;
+    --general-gray: #262626;
+    --general-red: #d90000;
+
+    --medal-gold: #9a7624;
+    --medal-gold-bg: rgba(154, 118, 36, 0.12);
+    --medal-gold-border: rgba(154, 118, 36, 0.24);
+    --medal-silver: #5a6068;
+    --medal-silver-bg: rgba(90, 96, 104, 0.1);
+    --medal-silver-border: rgba(90, 96, 104, 0.2);
+    --medal-bronze: #7a563c;
+    --medal-bronze-bg: rgba(122, 86, 60, 0.12);
+    --medal-bronze-border: rgba(122, 86, 60, 0.24);
+
+    --general-red-gradient: linear-gradient(180deg, #aa0000 0%, #e80000 50%, #eb2323 100%);
+    --easy-red-gradient: linear-gradient(180deg, #aa0000 0%, #e80000 50%, #eb2323 100%);
+
+    --border-primary: rgba(255, 255, 255, 0.2);
+
+    --text-default: #0e0b0b;
+    --text-inverse: #fff;
+
+    --letter-spacing-base: 0.04em;
+    --transition-base: 0.3s ease-in-out;
+    --section-gap: 160px;
+    --page-offset: 160px;
+}

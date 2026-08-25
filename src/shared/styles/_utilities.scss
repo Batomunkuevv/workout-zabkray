@@ -1,0 +1,48 @@
+@use "shared/styles/mixins" as *;
+
+:root {
+    @include max(md) {
+        --section-gap: 120px;
+    }
+
+    @include max(sm) {
+        --section-gap: 80px;
+    }
+}
+
+.red-text {
+    color: var(--general-red);
+}
+
+.section-stack {
+    display: flex;
+    flex-direction: column;
+    gap: var(--section-gap);
+    padding-bottom: var(--section-gap);
+}
+
+.section-stack-offset {
+    padding-top: var(--page-offset);
+
+    @include max(2xl) {
+        --page-offset: 152px;
+    }
+
+    @include max(xl) {
+        --page-offset: 128px;
+    }
+
+    @include max(sm) {
+        --page-offset: 122px;
+    }
+
+    @include max(2xs) {
+        --page-offset: 104px;
+    }
+}
+
+.section-inset {
+    --section-tag-top: var(--section-gap);
+    padding-block: var(--section-gap);
+}
+

@@ -1,0 +1,144 @@
+@use "shared/styles/mixins" as *;
+
+.page {
+    position: relative;
+    background: #fff;
+}
+
+.header {
+    display: grid;
+    gap: 40px;
+    margin-bottom: 64px;
+
+    @include max(md) {
+        gap: 32px;
+        margin-bottom: 48px;
+    }
+
+    @include max(sm) {
+        gap: 24px;
+        margin-bottom: 40px;
+    }
+}
+
+.intro {
+    display: grid;
+    gap: 16px;
+
+    @include max(sm) {
+        gap: 12px;
+    }
+}
+
+.title {
+    hyphens: none;
+
+    @include max(md) {
+        font-size: 32px;
+    }
+
+    @include max(sm) {
+        font-size: 28px;
+    }
+
+    @include max(2xs) {
+        font-size: 24px;
+    }
+}
+
+.meta {
+    display: grid;
+    gap: 8px;
+    margin-top: 8px;
+}
+
+.metaItem {
+    color: rgba(14, 11, 11, 0.56);
+}
+
+.metaLine {
+    display: inline-flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    align-items: baseline;
+}
+
+.content {
+    display: grid;
+    gap: 32px;
+}
+
+.block {
+    display: grid;
+    gap: 16px;
+}
+
+.sectionTitle {
+    font-family: var(--font-accent);
+    font-size: 24px;
+    line-height: 130%;
+    letter-spacing: var(--letter-spacing-base);
+    text-transform: uppercase;
+
+    @include max(sm) {
+        font-size: 20px;
+    }
+}
+
+.text {
+    color: rgba(14, 11, 11, 0.72);
+}
+
+.list {
+    display: grid;
+    gap: 8px;
+    margin: 0;
+    padding: 0 0 0 24px;
+}
+
+.inlineLink {
+    color: var(--text-default);
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    transition: color var(--transition-base);
+
+    @media (hover: hover) {
+        &:hover,
+        &:focus-visible {
+            color: var(--general-red);
+        }
+    }
+}
+
+.requisites {
+    display: grid;
+    margin: 8px 0 0;
+    border-top: 1px solid rgba(14, 11, 11, 0.1);
+}
+
+.requisite {
+    display: grid;
+    gap: 4px;
+    padding: 16px 0;
+    border-bottom: 1px solid rgba(14, 11, 11, 0.1);
+
+    @include min(md) {
+        grid-template-columns: 160px minmax(0, 1fr);
+        gap: 24px;
+        align-items: baseline;
+    }
+}
+
+.requisiteLabel {
+    color: rgba(14, 11, 11, 0.4);
+    font-family: var(--font-accent);
+    font-size: 12px;
+    line-height: 130%;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
+.requisiteValue {
+    min-width: 0;
+    overflow-wrap: break-word;
+}

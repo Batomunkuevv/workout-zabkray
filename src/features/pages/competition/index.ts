@@ -1,0 +1,10 @@
+export { CompetitionDetailsPage } from "./CompetitionDetailsPage";
+export { About } from "./about";
+export { Categories } from "./categories";
+export { Cta } from "./cta";
+export { Faq } from "./faq";
+export { Hero } from "./hero";
+export { Judges } from "./judges";
+export { News } from "./news";
+export { Prizes } from "./prizes";
+export { Program } from "./program";

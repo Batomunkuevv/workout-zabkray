@@ -1,0 +1,49 @@
+@use "shared/styles/mixins" as *;
+
+.tag {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px 8px 24px 8px;
+    border-radius: 12px;
+    background: var(--general-red-gradient);
+    color: var(--text-inverse);
+    font-family: var(--font-accent);
+    font-size: 24px;
+    line-height: 130%;
+    font-weight: 600;
+    letter-spacing: var(--letter-spacing-base);
+    text-transform: uppercase;
+
+    @include max(xl) {
+        padding: 8px 24px;
+        font-size: 16px;
+    }
+
+    @include max(sm) {
+        padding: 8px 16px;
+        font-size: 14px;
+    }
+}
+
+.vertical {
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+
+    @include max(xl) {
+        writing-mode: initial;
+        transform: none;
+    }
+}
+
+.horizontal {
+    padding: 8px 24px;
+
+    @include max(xl) {
+        padding: 8px 24px;
+    }
+
+    @include max(sm) {
+        padding: 8px 16px;
+    }
+}
