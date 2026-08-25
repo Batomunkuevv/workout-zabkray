@@ -6,10 +6,10 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "deploy": "bash scripts/deploy.sh"
   },
   "dependencies": {
-    "@next/swc-darwin-arm64": "^15.1.6",
     "html-react-parser": "^5.2.3",
     "next": "15.1.6",
     "react": "^19.0.0",

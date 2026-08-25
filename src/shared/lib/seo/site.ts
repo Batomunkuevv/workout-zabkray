@@ -1,4 +1,4 @@
-export const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://workout-zabkray.ru";
+export const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://workout-federation.ru";
 
 export const SITE_NAME = "Федерация воркаута Забайкальского края";
 
