@@ -1,8 +1,4 @@
-export {
-    getCompetitionEventJsonLd,
-    getLocalBusinessJsonLd,
-    getOrganizationJsonLd,
-} from "./jsonLd";
+export { getLocalBusinessJsonLd, getOrganizationJsonLd } from "./jsonLd";
 export {
     SITE_DEFAULT_DESCRIPTION,
     SITE_DEFAULT_TITLE,

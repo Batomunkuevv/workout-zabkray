@@ -9,7 +9,6 @@ export const MENU_ITEMS = [
         ],
     },
     { title: "Атлеты", href: "/athletes" },
-    { title: "Соревнования", href: "/competitions" },
     {
         title: "Зал",
         children: [

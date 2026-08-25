@@ -7,7 +7,7 @@ import styles from "./not-found.module.scss";
 export const metadata: Metadata = {
     title: "Страница не найдена | Федерация воркаута Забайкальского края",
     description:
-        "Запрошенная страница не найдена. Перейдите на главную или в разделы: зал, атлеты, соревнования, контакты.",
+        "Запрошенная страница не найдена. Перейдите на главную или в разделы: зал, атлеты, контакты.",
     robots: { index: false, follow: true },
 };
 
@@ -38,16 +38,15 @@ const NotFound = () => {
                                 Не та <span className={styles.titleAccent}>площадка</span>
                             </Typography>
                             <Typography variant="bodyLarge" className={styles.text}>
-                                Такой страницы не&nbsp;существует. Зато существуют тренировки, соревнования и&nbsp;новые
-                                рекорды.
+                                Такой страницы не&nbsp;существует. Зато существуют тренировки и&nbsp;новые рекорды.
                             </Typography>
 
                             <div className={styles.actions}>
                                 <Button href="/" tone="dark" className={styles.button}>
                                     На главную
                                 </Button>
-                                <Button href="/competitions" tone="light" className={styles.secondaryButton}>
-                                    Соревнования
+                                <Button href="/athletes" tone="light" className={styles.secondaryButton}>
+                                    Атлеты
                                 </Button>
                             </div>
                         </div>

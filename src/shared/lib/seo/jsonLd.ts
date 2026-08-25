@@ -5,7 +5,6 @@ import {
     type FederationPlace,
 } from "@entities/contacts";
 import { SOCIAL_LINKS } from "@entities/social";
-import type { Competition } from "@entities/competitions";
 
 import { SITE_DEFAULT_DESCRIPTION, SITE_NAME, SITE_URL } from "./site";
 
@@ -27,10 +26,6 @@ const toAbsoluteUrl = (path: string) => {
 
 const getSocialSameAs = () => {
     return SOCIAL_LINKS.map((link) => link.url).filter((url) => url.startsWith("http"));
-};
-
-const stripHtml = (value: string) => {
-    return value.replace(/<[^>]*>/g, "").replace(/\s+/g, " ").trim();
 };
 
 export const getOrganizationJsonLd = () => {
@@ -70,33 +65,6 @@ export const getLocalBusinessJsonLd = (place: FederationPlace = FEDERATION_PLACE
             longitude: place.coordinates.lon,
         },
         parentOrganization: {
-            "@id": `${SITE_URL}/#organization`,
-        },
-    };
-};
-
-export const getCompetitionEventJsonLd = (competition: Competition) => {
-    return {
-        "@context": "https://schema.org",
-        "@type": "SportsEvent",
-        "@id": `${SITE_URL}/competitions/${competition.slug}#event`,
-        name: stripHtml(competition.title),
-        description: competition.seoDescription ?? competition.description,
-        url: `${SITE_URL}/competitions/${competition.slug}`,
-        image: toAbsoluteUrl(competition.image),
-        eventStatus: "https://schema.org/EventScheduled",
-        eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode",
-        location: {
-            "@type": "Place",
-            name: FEDERATION_PLACE.title,
-            address: POSTAL_ADDRESS,
-            geo: {
-                "@type": "GeoCoordinates",
-                latitude: FEDERATION_PLACE.coordinates.lat,
-                longitude: FEDERATION_PLACE.coordinates.lon,
-            },
-        },
-        organizer: {
             "@id": `${SITE_URL}/#organization`,
         },
     };
