@@ -24,8 +24,8 @@ source .env
 set +a
 
 echo "==> Install deps"
-# Нужны devDependencies (typescript и т.д.) для next build
-npm ci --include=dev
+# NODE_ENV=production из .env иначе режет devDependencies — для next build они нужны
+npm ci --include=dev --omit=dev=false
 
 echo "==> Build"
 # NEXT_PUBLIC_* подхватываются из .env на этапе сборки
