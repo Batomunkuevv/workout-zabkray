@@ -24,9 +24,11 @@ source .env
 set +a
 
 echo "==> Install deps"
-npm ci
+# Нужны devDependencies (typescript и т.д.) для next build
+npm ci --include=dev
 
 echo "==> Build"
+# NEXT_PUBLIC_* подхватываются из .env на этапе сборки
 npm run build
 
 echo "==> Prepare standalone assets"

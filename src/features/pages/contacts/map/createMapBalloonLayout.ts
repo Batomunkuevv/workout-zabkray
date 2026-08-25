@@ -24,9 +24,7 @@ const isBalloonElement = (element: HTMLElement | null | undefined): element is H
     Boolean(element?.querySelector(".wz-map-balloon__tail"));
 
 export const createMapBalloonLayout = (ymaps: YMapsApi, contentHtml: string): YMapLayout => {
-    let BalloonLayout: BalloonLayoutClass;
-
-    BalloonLayout = ymaps.templateLayoutFactory.createClass(
+    const BalloonLayout: BalloonLayoutClass = ymaps.templateLayoutFactory.createClass(
         `
             <div class="wz-map-balloon">
                 ${contentHtml}

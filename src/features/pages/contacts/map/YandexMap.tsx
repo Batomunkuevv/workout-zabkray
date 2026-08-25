@@ -18,6 +18,7 @@ import { createMapBalloonHtml } from "./createMapBalloonHtml";
 import { createMapBalloonLayout } from "./createMapBalloonLayout";
 import { createMapPinOptions } from "./createMapPinOptions";
 
+import "./YandexMap.balloon.scss";
 import styles from "./YandexMap.module.scss";
 
 const API_KEY = process.env.NEXT_PUBLIC_YANDEX_MAPS_API_KEY;
