@@ -77,7 +77,7 @@ export const ATHLETES: Athlete[] = [
         image: "/images/athletes/gleb-purtov.jpg",
         achievements: [
             { event: "Троеборье", place: 1, year: 2026, note: "12–15, стадион СибВО" },
-            { event: "Троеборье", place: 1, year: 2026, note: "парк Ододора" },
+            { event: "Троеборье", place: 1, year: 2026, note: "Одора" },
         ],
     },
     {

@@ -1,0 +1,1 @@
+export { TrainersBoard } from "./TrainersBoard";

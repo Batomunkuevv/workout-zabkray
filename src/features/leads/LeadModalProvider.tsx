@@ -3,7 +3,6 @@
 import { createContext, useContext, useState, type ReactNode } from "react";
 
 import { LeadModal } from "./LeadModal";
-import { LeadSuccessModal } from "./LeadSuccessModal";
 
 type LeadModalContextValue = {
     isOpen: boolean;
@@ -18,35 +17,21 @@ type LeadModalProviderProps = {
 };
 
 export const LeadModalProvider = ({ children }: LeadModalProviderProps) => {
-    const [isFormOpen, setIsFormOpen] = useState(false);
-    const [isSuccessOpen, setIsSuccessOpen] = useState(false);
+    const [isOpen, setIsOpen] = useState(false);
 
-    const open = () => {
-        setIsSuccessOpen(false);
-        setIsFormOpen(true);
-    };
-
-    const close = () => {
-        setIsFormOpen(false);
-        setIsSuccessOpen(false);
-    };
-
-    const handleSuccess = () => {
-        setIsFormOpen(false);
-        setIsSuccessOpen(true);
-    };
+    const open = () => setIsOpen(true);
+    const close = () => setIsOpen(false);
 
     return (
         <LeadModalContext.Provider
             value={{
-                isOpen: isFormOpen || isSuccessOpen,
+                isOpen,
                 open,
                 close,
             }}
         >
             {children}
-            <LeadModal isOpen={isFormOpen} onClose={close} onSuccess={handleSuccess} />
-            <LeadSuccessModal isOpen={isSuccessOpen} onClose={close} />
+            <LeadModal isOpen={isOpen} onClose={close} />
         </LeadModalContext.Provider>
     );
 };

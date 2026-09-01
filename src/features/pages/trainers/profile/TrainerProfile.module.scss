@@ -1,0 +1,290 @@
+@use "shared/styles/mixins" as *;
+
+.intro,
+.schedule,
+.related {
+    position: relative;
+    background: #fff;
+}
+
+.header {
+    display: grid;
+    gap: 40px;
+
+    @include max(md) {
+        gap: 32px;
+    }
+
+    @include max(sm) {
+        gap: 24px;
+    }
+}
+
+.hero {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(280px, 480px);
+    grid-template-areas:
+        "identity media"
+        "details media";
+    column-gap: 48px;
+    row-gap: 0;
+    align-items: start;
+
+    @include max(lg) {
+        grid-template-columns: minmax(0, 1fr) minmax(240px, 400px);
+        column-gap: 32px;
+    }
+
+    @include max(md) {
+        grid-template-columns: minmax(0, 1fr) minmax(240px, 320px);
+        grid-template-areas:
+            "identity media"
+            "details details";
+        gap: 32px 24px;
+    }
+
+    @include max(sm) {
+        grid-template-columns: 1fr;
+        grid-template-areas:
+            "identity"
+            "media"
+            "details";
+        gap: 24px;
+    }
+}
+
+.media {
+    grid-area: media;
+    position: relative;
+    overflow: hidden;
+    border-radius: 24px;
+    background: var(--general-black);
+
+    @include max(sm) {
+        border-radius: 20px;
+    }
+}
+
+.image {
+    aspect-ratio: 4 / 5;
+}
+
+.identity,
+.details {
+    display: grid;
+    align-content: start;
+    min-width: 0;
+}
+
+.identity {
+    grid-area: identity;
+}
+
+.details {
+    grid-area: details;
+
+    @include max(md) {
+        > :first-child {
+            margin-top: 0;
+        }
+    }
+}
+
+.role {
+    color: #d90000;
+    font-family: var(--font-accent);
+    font-size: 12px;
+    line-height: 130%;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
+.name {
+    margin-top: 16px;
+    hyphens: none;
+
+    @include max(md) {
+        font-size: 40px;
+    }
+
+    @include max(sm) {
+        margin-top: 12px;
+        font-size: 32px;
+    }
+
+    @include max(2xs) {
+        font-size: 28px;
+    }
+}
+
+.meta {
+    display: grid;
+    gap: 16px;
+    margin: 32px 0 0;
+    padding: 20px 24px;
+    border-radius: 16px;
+    background: #f4f4f4;
+
+    @include max(sm) {
+        margin-top: 24px;
+        padding: 16px 20px;
+    }
+}
+
+.experience {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px 16px;
+    margin: 0;
+}
+
+.experienceItem {
+    display: grid;
+    gap: 8px;
+    margin: 0;
+}
+
+.experienceLabel {
+    color: rgba(14, 11, 11, 0.48);
+    font-size: 12px;
+    line-height: 130%;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+}
+
+.experienceValue {
+    color: #0e0b0b;
+    font-family: var(--font-accent);
+    font-size: 24px;
+    line-height: 130%;
+    letter-spacing: var(--letter-spacing-base);
+
+    @include max(sm) {
+        font-size: 20px;
+    }
+}
+
+.actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 24px;
+    margin-top: 32px;
+
+    @include max(sm) {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 16px;
+        margin-top: 24px;
+    }
+}
+
+.leadButton {
+    min-height: 48px;
+}
+
+.phone {
+    display: grid;
+    gap: 8px;
+    text-decoration: none;
+}
+
+.phoneLabel {
+    color: #d90000;
+    font-family: var(--font-accent);
+    font-size: 12px;
+    line-height: 130%;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
+.phoneValue {
+    color: #0e0b0b;
+    font-family: var(--font-accent);
+    font-size: 20px;
+    line-height: 130%;
+    letter-spacing: var(--letter-spacing-base);
+    white-space: nowrap;
+    transition: color var(--transition-base);
+
+    @include max(xl) {
+        font-size: 16px;
+    }
+}
+
+@media (hover: hover) {
+    .phone:hover .phoneValue {
+        color: #d90000;
+    }
+}
+
+.socials {
+    margin-left: auto;
+
+    @include max(sm) {
+        margin-left: 0;
+    }
+}
+
+.sectionTitle {
+    hyphens: none;
+
+    @include max(md) {
+        font-size: 32px;
+    }
+
+    @include max(sm) {
+        font-size: 28px;
+    }
+
+    @include max(2xs) {
+        font-size: 24px;
+    }
+}
+
+.achievements {
+    display: grid;
+    gap: 12px;
+    margin: 0;
+    padding: 16px 0 0;
+    border-top: 1px solid rgba(14, 11, 11, 0.08);
+    list-style: none;
+}
+
+.achievement {
+    display: grid;
+    grid-template-columns: 8px minmax(0, 1fr);
+    column-gap: 12px;
+    align-items: start;
+
+    &::before {
+        content: "";
+        width: 8px;
+        height: 8px;
+        margin-top: 8px;
+        border-radius: 50%;
+        background: #d90000;
+    }
+}
+
+.achievementText {
+    color: rgba(14, 11, 11, 0.72);
+    font-size: 16px;
+    line-height: 150%;
+}
+
+.scheduleHead {
+    margin-bottom: 32px;
+
+    @include max(sm) {
+        margin-bottom: 24px;
+    }
+}
+
+.relatedHead {
+    margin-bottom: 32px;
+
+    @include max(sm) {
+        margin-bottom: 24px;
+    }
+}

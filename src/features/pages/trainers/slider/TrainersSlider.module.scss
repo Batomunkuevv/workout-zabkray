@@ -1,0 +1,42 @@
+@use "shared/styles/mixins" as *;
+
+.slider {
+    overflow: visible;
+    padding-bottom: 8px;
+
+    &:global(.swiper) {
+        overflow: visible;
+    }
+
+    :global(.swiper-wrapper) {
+        align-items: stretch;
+        overflow: visible;
+    }
+
+    &:global(.swiper) :global(.swiper-pagination) {
+        position: relative;
+        inset: auto;
+        bottom: auto;
+        left: auto;
+        width: 100%;
+        margin-top: 24px;
+    }
+
+    :global(.swiper-pagination-bullet) {
+        width: 8px;
+        height: 8px;
+        margin: 0 4px;
+        background: rgba(14, 11, 11, 0.2);
+        opacity: 1;
+        transition: background var(--transition-base);
+    }
+
+    :global(.swiper-pagination-bullet-active) {
+        background: var(--general-red);
+    }
+}
+
+.slide {
+    height: auto;
+    display: grid;
+}

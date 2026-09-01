@@ -1,0 +1,38 @@
+@use "shared/styles/mixins" as *;
+
+.grid,
+.slider {
+    position: relative;
+    z-index: 2;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 24px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    align-items: stretch;
+
+    > li {
+        display: grid;
+    }
+
+    @include min(2xl) {
+        grid-template-columns: repeat(5, minmax(0, 1fr));
+    }
+
+    @include max(lg) {
+        display: none;
+    }
+}
+
+.slider {
+    display: none;
+    overflow: visible;
+
+    @include max(lg) {
+        display: block;
+    }
+}

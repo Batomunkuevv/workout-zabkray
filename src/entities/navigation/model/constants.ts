@@ -5,7 +5,7 @@ export const MENU_ITEMS = [
         title: "Федерация",
         children: [
             { title: "О федерации", href: "/#about" },
-            { title: "Тренеры", href: "/#trainers" },
+            { title: "Тренеры", href: "/trainers" },
         ],
     },
     { title: "Атлеты", href: "/athletes" },

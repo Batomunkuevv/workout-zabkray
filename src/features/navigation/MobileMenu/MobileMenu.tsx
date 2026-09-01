@@ -1,12 +1,13 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 import { isMenuGroup, type MenuItem } from "@entities/navigation";
 import { SOCIAL_LINKS } from "@entities/social";
 
+import { useLockBodyScroll } from "@shared/lib/lockBodyScroll";
 import { Burger, SocialLinks, Typography } from "@shared/ui";
 
 import type { MobileMenuProps } from "./types";
@@ -15,17 +16,17 @@ import styles from "./MobileMenu.module.scss";
 
 export const MobileMenu = ({ items, isOpen, onClose }: MobileMenuProps) => {
     const pathname = usePathname();
+    const rootRef = useRef<HTMLDivElement>(null);
     const [openTitle, setOpenTitle] = useState<string | null>(null);
 
+    useLockBodyScroll(isOpen);
+
     useEffect(() => {
-        if (!isOpen) return;
+        if (!isOpen) {
+            return;
+        }
 
-        const previousOverflow = document.body.style.overflow;
-        document.body.style.overflow = "hidden";
-
-        return () => {
-            document.body.style.overflow = previousOverflow;
-        };
+        rootRef.current?.scrollTo(0, 0);
     }, [isOpen]);
 
     useEffect(() => {
@@ -39,7 +40,7 @@ export const MobileMenu = ({ items, isOpen, onClose }: MobileMenuProps) => {
     };
 
     return (
-        <>
+        <div className={styles.root} data-open={isOpen} ref={rootRef} inert={!isOpen}>
             <button
                 type="button"
                 className={styles.backdrop}
@@ -48,34 +49,36 @@ export const MobileMenu = ({ items, isOpen, onClose }: MobileMenuProps) => {
                 tabIndex={isOpen ? 0 : -1}
                 onClick={onClose}
             />
-            <div
-                className={styles.panel}
-                data-open={isOpen}
-                role="dialog"
-                aria-modal="true"
-                aria-label="Мобильное меню"
-                aria-hidden={!isOpen}
-            >
-                <div className={styles.panelHeader}>
-                    <Burger variant="close" tone="dark" onClick={onClose} className={styles.closeButton} />
+            <div className={styles.frame}>
+                <div
+                    className={styles.panel}
+                    data-open={isOpen}
+                    role="dialog"
+                    aria-modal="true"
+                    aria-label="Мобильное меню"
+                    aria-hidden={!isOpen}
+                >
+                    <div className={styles.panelHeader}>
+                        <Burger variant="close" tone="dark" onClick={onClose} className={styles.closeButton} />
+                    </div>
+                    <nav className={styles.nav} aria-label="Мобильная навигация">
+                        <ul className={styles.menuList}>
+                            {items.map((item) => (
+                                <MobileMenuItem
+                                    key={item.title}
+                                    item={item}
+                                    pathname={pathname}
+                                    isGroupOpen={openTitle === item.title}
+                                    onToggleGroup={() => toggleGroup(item.title)}
+                                    onClose={onClose}
+                                />
+                            ))}
+                        </ul>
+                    </nav>
+                    <SocialLinks links={SOCIAL_LINKS} surface="onWhite" className={styles.socials} />
                 </div>
-                <nav className={styles.nav} aria-label="Мобильная навигация">
-                    <ul className={styles.menuList}>
-                        {items.map((item) => (
-                            <MobileMenuItem
-                                key={item.title}
-                                item={item}
-                                pathname={pathname}
-                                isGroupOpen={openTitle === item.title}
-                                onToggleGroup={() => toggleGroup(item.title)}
-                                onClose={onClose}
-                            />
-                        ))}
-                    </ul>
-                </nav>
-                <SocialLinks links={SOCIAL_LINKS} surface="onLight" className={styles.socials} />
             </div>
-        </>
+        </div>
     );
 };
 

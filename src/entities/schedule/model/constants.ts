@@ -1,4 +1,18 @@
-import type { ScheduleDay, ScheduleGroup, ScheduleSlot } from "./types";
+import type { ScheduleDay, ScheduleGroup, SchedulePeriod, ScheduleSlot, WeekDayId } from "./types";
+
+export const WEEK_DAYS: Record<WeekDayId, { title: string; short: string }> = {
+    monday: { title: "Понедельник", short: "Пн" },
+    tuesday: { title: "Вторник", short: "Вт" },
+    wednesday: { title: "Среда", short: "Ср" },
+    thursday: { title: "Четверг", short: "Чт" },
+    friday: { title: "Пятница", short: "Пт" },
+    saturday: { title: "Суббота", short: "Сб" },
+};
+
+export const SCHEDULE_PERIODS: { id: SchedulePeriod; title: string }[] = [
+    { id: "morning", title: "Утро" },
+    { id: "evening", title: "Вечер" },
+];
 
 const MORNING_SLOTS: ScheduleSlot[] = [
     { start: "08:00", end: "09:00", period: "morning" },
@@ -60,7 +74,3 @@ export const SCHEDULE_GROUPS: ScheduleGroup[] = [
     },
 ];
 
-const stripLeadingZero = (value: string) => value.replace(/^0/, "");
-
-export const formatTimeRange = (start: string, end: string) =>
-    `${stripLeadingZero(start)}–${stripLeadingZero(end)}`;

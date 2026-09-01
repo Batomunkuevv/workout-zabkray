@@ -7,6 +7,7 @@
     --nav-link-color: #fff;
     --nav-link-underline: linear-gradient(90deg, #fff 0%, rgb(255 255 255 / 60%) 100%);
     padding: 0 var(--header-inset);
+    padding-right: calc(var(--header-inset) + var(--scrollbar-offset, 0px));
     position: fixed;
     top: var(--header-top);
     width: 100%;
@@ -20,6 +21,7 @@
         --header-inset: 24px;
         --header-offset: var(--header-inset);
         padding: 0;
+        padding-right: var(--scrollbar-offset, 0px);
         top: 0;
         transform: translateY(var(--header-offset));
         will-change: transform;

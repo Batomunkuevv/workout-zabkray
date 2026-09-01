@@ -1,0 +1,104 @@
+@use "shared/styles/mixins" as *;
+
+.boards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 16px;
+
+    @include max(sm) {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+}
+
+.board {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    min-width: 0;
+    padding: 24px;
+    border-radius: 16px;
+    background: #f4f4f4;
+
+    @include max(sm) {
+        gap: 20px;
+        padding: 20px;
+    }
+}
+
+.boardHead {
+    display: grid;
+    gap: 16px;
+}
+
+.boardTitle {
+    font-family: var(--font-accent);
+    font-size: 24px;
+    line-height: 130%;
+    letter-spacing: var(--letter-spacing-base);
+    text-transform: uppercase;
+
+    @include max(xl) {
+        font-size: 20px;
+    }
+}
+
+.accent {
+    width: 40px;
+    height: 4px;
+    background: var(--general-red-gradient);
+}
+
+.period {
+    display: grid;
+    gap: 8px;
+}
+
+.periodTitle {
+    color: rgba(14, 11, 11, 0.48);
+    font-size: 12px;
+    line-height: 130%;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
+.slots {
+    display: grid;
+    grid-template-columns: max-content minmax(0, 1fr);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.slot {
+    display: grid;
+    grid-template-columns: subgrid;
+    grid-column: 1 / -1;
+    column-gap: 12px;
+    align-items: center;
+    min-height: 40px;
+    padding: 8px 0;
+    border-top: 1px solid rgba(14, 11, 11, 0.08);
+}
+
+.time {
+    white-space: nowrap;
+    font-family: var(--font-accent);
+    font-size: 16px;
+    line-height: 130%;
+    letter-spacing: var(--letter-spacing-base);
+    font-variant-numeric: tabular-nums;
+}
+
+.note {
+    justify-self: start;
+    max-width: 100%;
+    padding: 4px 8px;
+    border-radius: 8px;
+    background: var(--general-red-gradient);
+    font-family: var(--font-accent);
+    font-size: 12px;
+    line-height: 130%;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+}

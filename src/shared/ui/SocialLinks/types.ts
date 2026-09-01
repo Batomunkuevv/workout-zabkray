@@ -1,6 +1,6 @@
 import { SocialLink } from "@entities/social";
 
-export type SocialLinksSurface = "onDark" | "onLight" | "onWhite";
+export type SocialLinksSurface = "onDark" | "onWhite";
 
 export type SocialLinksProps = {
     className?: string;

@@ -1,4 +1,11 @@
-export { getLocalBusinessJsonLd, getOrganizationJsonLd } from "./jsonLd";
+export {
+    getBreadcrumbJsonLd,
+    getLocalBusinessJsonLd,
+    getOrganizationJsonLd,
+    getTrainerPageJsonLd,
+    getTrainersListJsonLd,
+} from "./jsonLd";
+export type { BreadcrumbJsonLdItem } from "./jsonLd";
 export {
     SITE_DEFAULT_DESCRIPTION,
     SITE_DEFAULT_TITLE,

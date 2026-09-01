@@ -1,0 +1,81 @@
+@use "shared/styles/mixins" as *;
+
+.roster {
+    position: relative;
+    background: #fff;
+}
+
+.header {
+    display: grid;
+    gap: 40px;
+    margin-bottom: 64px;
+
+    @include max(md) {
+        gap: 32px;
+        margin-bottom: 48px;
+    }
+
+    @include max(sm) {
+        gap: 24px;
+        margin-bottom: 40px;
+    }
+}
+
+.intro {
+    display: grid;
+    gap: 24px;
+    max-width: 820px;
+
+    @include max(md) {
+        gap: 20px;
+    }
+
+    @include max(sm) {
+        gap: 16px;
+    }
+}
+
+.title {
+    hyphens: none;
+
+    @include max(md) {
+        font-size: 34px;
+    }
+
+    @include max(sm) {
+        font-size: 28px;
+    }
+
+    @include max(2xs) {
+        font-size: 24px;
+    }
+}
+
+.lead {
+    max-width: 720px;
+    color: rgba(14, 11, 11, 0.72);
+}
+
+.list {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 24px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    align-items: stretch;
+
+    > li {
+        display: grid;
+    }
+
+    @include max(lg) {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 20px;
+    }
+
+    @include max(sm) {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+}

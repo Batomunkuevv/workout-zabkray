@@ -91,27 +91,6 @@
     }
 }
 
-.socials--onLight {
-    .link {
-        background: var(--general-black);
-        color: #fff;
-
-        &::after {
-            background: var(--general-black);
-        }
-
-        &:hover {
-            background: transparent;
-            color: #fff;
-
-            &::after {
-                opacity: 0;
-                visibility: hidden;
-            }
-        }
-    }
-}
-
 .socials--onWhite {
     .link {
         background: var(--general-gray);

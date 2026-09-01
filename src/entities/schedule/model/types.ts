@@ -14,8 +14,10 @@ export type ScheduleSlot = {
     note?: ScheduleSlotNote;
 };
 
+export type WeekDayId = "monday" | "tuesday" | "wednesday" | "thursday" | "friday" | "saturday";
+
 export type ScheduleDay = {
-    id: string;
+    id: WeekDayId;
     title: string;
     slots: readonly ScheduleSlot[];
 };

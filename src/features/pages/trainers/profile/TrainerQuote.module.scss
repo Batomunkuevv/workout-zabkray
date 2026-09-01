@@ -1,0 +1,73 @@
+@use "shared/styles/mixins" as *;
+
+.quote {
+    position: relative;
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    align-items: start;
+    column-gap: 16px;
+    margin: 16px 0 0;
+    padding: 24px 40px 24px 32px;
+    overflow: hidden;
+    border-radius: 16px;
+    background: var(--general-black);
+
+    &::after {
+        content: "»";
+        position: absolute;
+        right: 8px;
+        bottom: -8px;
+        z-index: 0;
+        font-family: var(--font-accent);
+        font-size: 112px;
+        font-weight: 600;
+        line-height: 0.8;
+        letter-spacing: var(--letter-spacing-base);
+        color: rgba(255, 255, 255, 0.1);
+        pointer-events: none;
+        user-select: none;
+    }
+
+    @include max(sm) {
+        column-gap: 12px;
+        margin-top: 12px;
+        padding: 20px 24px 16px;
+    }
+}
+
+.mark {
+    position: relative;
+    z-index: 1;
+    color: #d90000;
+    font-family: var(--font-accent);
+    font-size: 40px;
+    font-weight: 600;
+    line-height: 0.8;
+    letter-spacing: var(--letter-spacing-base);
+    user-select: none;
+
+    @include max(sm) {
+        font-size: 32px;
+    }
+}
+
+.blockquote {
+    position: relative;
+    z-index: 1;
+    margin: 0;
+}
+
+.text {
+    text-transform: none;
+    hyphens: none;
+    font-size: 24px;
+    font-weight: 600;
+
+    @include max(sm) {
+        font-size: 20px;
+    }
+
+    @include max(2xs) {
+        font-size: 16px;
+    }
+}

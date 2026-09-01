@@ -88,9 +88,9 @@
     }
 
     @include max(2xs) {
-        width: min(100%, 248px);
+        width: min(calc(100% - 40px), 248px);
         height: 296px;
-        margin-left: 72px;
+        margin-left: 40px;
     }
 }
 

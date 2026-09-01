@@ -1,17 +1,12 @@
 import clsx from "clsx";
 
-import { WEEK_SCHEDULE, formatTimeRange } from "@entities/schedule";
-import type { ScheduleDay, SchedulePeriod } from "@entities/schedule";
+import { SCHEDULE_PERIODS, WEEK_SCHEDULE, formatTimeRange } from "@entities/schedule";
+import type { ScheduleDay } from "@entities/schedule";
 import { Container, SECTION_INSET_CLASS, SectionTag, Typography } from "@shared/ui";
 
 import styles from "./Schedule.module.scss";
 
 const SECTION_TEXT = "Зал открыт шесть дней в неделю: утро и вечер. Воскресенье — выходной.";
-
-const PERIODS: { id: SchedulePeriod; title: string }[] = [
-    { id: "morning", title: "Утро" },
-    { id: "evening", title: "Вечер" },
-];
 
 const DayCard = ({ day }: { day: ScheduleDay }) => {
     return (
@@ -23,7 +18,7 @@ const DayCard = ({ day }: { day: ScheduleDay }) => {
                 <span className={styles.accent} aria-hidden="true" />
             </header>
 
-            {PERIODS.map((period) => {
+            {SCHEDULE_PERIODS.map((period) => {
                 const periodSlots = day.slots.filter((slot) => slot.period === period.id);
 
                 if (periodSlots.length === 0) {

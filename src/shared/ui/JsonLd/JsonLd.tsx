@@ -1,5 +1,5 @@
 type JsonLdProps = {
-    data: Record<string, unknown> | readonly Record<string, unknown>[];
+    data: object | readonly object[];
 };
 
 export const JsonLd = ({ data }: JsonLdProps) => {

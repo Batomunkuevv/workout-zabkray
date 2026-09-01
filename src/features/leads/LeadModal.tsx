@@ -9,11 +9,11 @@ import { submitLead } from "@features/leads/submitLead";
 import { Button, Checkbox, Input, Modal, Textarea, Typography } from "@shared/ui";
 
 import styles from "./LeadModal.module.scss";
+import successStyles from "./LeadSuccessModal.module.scss";
 
 type LeadModalProps = {
     isOpen: boolean;
     onClose: () => void;
-    onSuccess: () => void;
 };
 
 type FormErrors = {
@@ -27,7 +27,7 @@ type FormStatus = "idle" | "submitting" | "error";
 
 const countDigits = (value: string) => value.replace(/\D/g, "").length;
 
-export const LeadModal = ({ isOpen, onClose, onSuccess }: LeadModalProps) => {
+export const LeadModal = ({ isOpen, onClose }: LeadModalProps) => {
     const formId = useId();
     const [name, setName] = useState("");
     const [phone, setPhone] = useState("");
@@ -35,6 +35,7 @@ export const LeadModal = ({ isOpen, onClose, onSuccess }: LeadModalProps) => {
     const [consent, setConsent] = useState(false);
     const [errors, setErrors] = useState<FormErrors>({});
     const [status, setStatus] = useState<FormStatus>("idle");
+    const [isSuccess, setIsSuccess] = useState(false);
 
     useEffect(() => {
         if (!isOpen) {
@@ -47,6 +48,7 @@ export const LeadModal = ({ isOpen, onClose, onSuccess }: LeadModalProps) => {
         setConsent(false);
         setErrors({});
         setStatus("idle");
+        setIsSuccess(false);
     }, [isOpen]);
 
     const validate = (): FormErrors => {
@@ -99,104 +101,115 @@ export const LeadModal = ({ isOpen, onClose, onSuccess }: LeadModalProps) => {
             return;
         }
 
-        onSuccess();
+        setIsSuccess(true);
     };
 
     return (
         <Modal
             isOpen={isOpen}
             onClose={onClose}
-            title="Запись на тренировку"
-            description="Оставьте контакты — перезвоним и подберём группу."
-            panelClassName={styles.panel}
+            align={isSuccess ? "center" : "start"}
+            title={isSuccess ? "Заявка ушла" : "Запись на тренировку"}
+            description={
+                isSuccess
+                    ? "Свяжемся в ближайшее время и расскажем, с чего начать."
+                    : "Оставьте контакты — перезвоним и подберём группу."
+            }
+            panelClassName={isSuccess ? successStyles.panel : styles.panel}
         >
-            <form id={formId} className={styles.form} onSubmit={handleSubmit} noValidate>
-                <Input
-                    id={`${formId}-name`}
-                    label="Имя"
-                    name="name"
-                    autoComplete="name"
-                    placeholder="Как к вам обращаться"
-                    value={name}
-                    maxLength={MAX_LEAD_NAME_LENGTH}
-                    error={errors.name}
-                    onChange={(event) => setName(event.target.value)}
-                />
-
-                <Input
-                    id={`${formId}-phone`}
-                    label="Телефон"
-                    name="phone"
-                    type="tel"
-                    autoComplete="tel"
-                    inputMode="tel"
-                    placeholder="8 (914) 497 94-71"
-                    value={phone}
-                    error={errors.phone}
-                    onChange={(event) => setPhone(event.target.value)}
-                />
-
-                <Textarea
-                    id={`${formId}-comment`}
-                    label="Комментарий"
-                    name="comment"
-                    placeholder="Удобное время, опыт, вопросы"
-                    value={comment}
-                    maxLength={MAX_LEAD_COMMENT_LENGTH}
-                    rows={4}
-                    onChange={(event) => setComment(event.target.value)}
-                />
-
-                <Checkbox
-                    id={`${formId}-consent`}
-                    name="consent"
-                    checked={consent}
-                    error={errors.consent}
-                    onChange={(event) => setConsent(event.target.checked)}
-                    label={
-                        <>
-                            Согласен с{" "}
-                            <Link
-                                href={LEGAL_HREFS.privacyPolicy}
-                                className={styles.policyLink}
-                                onClick={(event) => {
-                                    event.stopPropagation();
-                                    onClose();
-                                }}
-                            >
-                                политикой конфиденциальности
-                            </Link>{" "}
-                            и{" "}
-                            <Link
-                                href={LEGAL_HREFS.personalData}
-                                className={styles.policyLink}
-                                onClick={(event) => {
-                                    event.stopPropagation();
-                                    onClose();
-                                }}
-                            >
-                                обработкой персональных данных
-                            </Link>
-                        </>
-                    }
-                />
-
-                {errors.form ? (
-                    <Typography as="p" variant="caption" className={styles.formError} role="alert">
-                        {errors.form}
-                    </Typography>
-                ) : null}
-
-                <Button
-                    type="submit"
-                    tone="dark"
-                    className={styles.submit}
-                    isLoading={status === "submitting"}
-                    disabled={status === "submitting"}
-                >
-                    {status === "submitting" ? "Отправляем…" : "Отправить заявку"}
+            {isSuccess ? (
+                <Button type="button" tone="dark" className={successStyles.closeButton} onClick={onClose}>
+                    Закрыть
                 </Button>
-            </form>
+            ) : (
+                <form id={formId} className={styles.form} onSubmit={handleSubmit} noValidate>
+                    <Input
+                        id={`${formId}-name`}
+                        label="Имя"
+                        name="name"
+                        autoComplete="name"
+                        placeholder="Как к вам обращаться"
+                        value={name}
+                        maxLength={MAX_LEAD_NAME_LENGTH}
+                        error={errors.name}
+                        onChange={(event) => setName(event.target.value)}
+                    />
+
+                    <Input
+                        id={`${formId}-phone`}
+                        label="Телефон"
+                        name="phone"
+                        type="tel"
+                        autoComplete="tel"
+                        inputMode="tel"
+                        placeholder="8 (914) 497 94-71"
+                        value={phone}
+                        error={errors.phone}
+                        onChange={(event) => setPhone(event.target.value)}
+                    />
+
+                    <Textarea
+                        id={`${formId}-comment`}
+                        label="Комментарий"
+                        name="comment"
+                        placeholder="Удобное время, опыт, вопросы"
+                        value={comment}
+                        maxLength={MAX_LEAD_COMMENT_LENGTH}
+                        rows={4}
+                        onChange={(event) => setComment(event.target.value)}
+                    />
+
+                    <Checkbox
+                        id={`${formId}-consent`}
+                        name="consent"
+                        checked={consent}
+                        error={errors.consent}
+                        onChange={(event) => setConsent(event.target.checked)}
+                        label={
+                            <>
+                                Согласен с{" "}
+                                <Link
+                                    href={LEGAL_HREFS.privacyPolicy}
+                                    className={styles.policyLink}
+                                    onClick={(event) => {
+                                        event.stopPropagation();
+                                        onClose();
+                                    }}
+                                >
+                                    политикой конфиденциальности
+                                </Link>{" "}
+                                и{" "}
+                                <Link
+                                    href={LEGAL_HREFS.personalData}
+                                    className={styles.policyLink}
+                                    onClick={(event) => {
+                                        event.stopPropagation();
+                                        onClose();
+                                    }}
+                                >
+                                    обработкой персональных данных
+                                </Link>
+                            </>
+                        }
+                    />
+
+                    {errors.form ? (
+                        <Typography as="p" variant="caption" className={styles.formError} role="alert">
+                            {errors.form}
+                        </Typography>
+                    ) : null}
+
+                    <Button
+                        type="submit"
+                        tone="dark"
+                        className={styles.submit}
+                        isLoading={status === "submitting"}
+                        disabled={status === "submitting"}
+                    >
+                        {status === "submitting" ? "Отправляем…" : "Отправить заявку"}
+                    </Button>
+                </form>
+            )}
         </Modal>
     );
 };
